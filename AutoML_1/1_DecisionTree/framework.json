@@ -1,0 +1,184 @@
+{
+    "uid": "d65df4bd-1d10-4329-af09-0ec67d6e9f3b",
+    "name": "1_DecisionTree",
+    "preprocessing": [
+        {
+            "categorical": [
+                {
+                    "convert_method": "categorical_to_int",
+                    "convert_params": {
+                        "Species": {
+                            "EC": 0,
+                            "PA": 1,
+                            "SA": 2
+                        },
+                        "Strain": {
+                            "EC_A": 0,
+                            "EC_B": 1,
+                            "PA_A": 2,
+                            "PA_B": 3,
+                            "SA_A": 4,
+                            "SA_B": 5
+                        },
+                        "Samples ": {
+                            "EC.A_BHI_A": 0,
+                            "EC.A_BHI_B": 1,
+                            "EC.A_BHI_D": 2,
+                            "EC.A_LB_A": 3,
+                            "EC.A_LB_B": 4,
+                            "EC.A_LB_C": 5,
+                            "EC.A_TSB_C": 6,
+                            "EC.B_BHI_B": 7,
+                            "EC.B_LB_A": 8,
+                            "EC.B_LB_C": 9,
+                            "EC.B_LB_D": 10,
+                            "EC.B_TSB_A": 11,
+                            "EC.B_TSB_B": 12,
+                            "EC.B_TSB_C": 13,
+                            "EC.B_TSB_D": 14,
+                            "PA.A_BHI_A": 15,
+                            "PA.A_BHI_B": 16,
+                            "PA.A_BHI_C": 17,
+                            "PA.A_LB_A": 18,
+                            "PA.A_LB_B": 19,
+                            "PA.A_LB_C": 20,
+                            "PA.A_LB_E": 21,
+                            "PA.A_TSB_A": 22,
+                            "PA.A_TSB_C": 23,
+                            "PA.A_TSB_D": 24,
+                            "PA.B_BHI_A": 25,
+                            "PA.B_BHI_C": 26,
+                            "PA.B_BHI_E": 27,
+                            "PA.B_LB_D": 28,
+                            "PA.B_TSB_A": 29,
+                            "SA.A_BHI_B": 30,
+                            "SA.A_BHI_C": 31,
+                            "SA.A_BHI_D": 32,
+                            "SA.A_BHI_E": 33,
+                            "SA.A_LB_B": 34,
+                            "SA.A_LB_C": 35,
+                            "SA.A_LB_D": 36,
+                            "SA.A_LB_E": 37,
+                            "SA.A_TSB_A": 38,
+                            "SA.A_TSB_B": 39,
+                            "SA.A_TSB_D": 40,
+                            "SA.B_BHI_A": 41,
+                            "SA.B_BHI_B": 42,
+                            "SA.B_BHI_C": 43,
+                            "SA.B_BHI_D": 44,
+                            "SA.B_BHI_E": 45,
+                            "SA.B_LB_B": 46,
+                            "SA.B_LB_C": 47,
+                            "SA.B_LB_D": 48,
+                            "SA.B_LB_E": 49,
+                            "SA.B_TSB_A": 50,
+                            "SA.B_TSB_C": 51,
+                            "SA.B_TSB_D": 52
+                        }
+                    },
+                    "columns": [
+                        "Species",
+                        "Strain",
+                        "Samples "
+                    ]
+                }
+            ],
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Species": [
+                        "categorical_to_int"
+                    ],
+                    "Strain": [
+                        "categorical_to_int"
+                    ],
+                    "Samples ": [
+                        "categorical_to_int"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.0",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "840850cc-276e-42d6-b27f-6bb91cc521f7",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 2
+            },
+            "name": "learner_fold_0"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 1,
+            "train_cant_improve_limit": 0,
+            "max_steps": 1,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "Species": [
+                    "categorical_to_int"
+                ],
+                "Strain": [
+                    "categorical_to_int"
+                ],
+                "Samples ": [
+                    "categorical_to_int"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "regression"
+        },
+        "validation_strategy": {
+            "validation_type": "split",
+            "train_ratio": 0.75,
+            "shuffle": true,
+            "X_path": "AutoML_1\\X.data",
+            "y_path": "AutoML_1\\y.data",
+            "results_path": "AutoML_1"
+        },
+        "learner": {
+            "model_type": "Decision Tree",
+            "ml_task": "regression",
+            "n_jobs": -1,
+            "seed": 1235,
+            "criterion": "mse",
+            "max_depth": 3,
+            "explain_level": 2
+        },
+        "automl_random_state": 1234,
+        "ml_task": "regression",
+        "explain_level": 2,
+        "name": "1_DecisionTree",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 60
+    },
+    "saved": [
+        "1_DecisionTree\\learner_fold_0.decision_tree"
+    ],
+    "predictions_fname": "1_DecisionTree\\predictions_validation.csv",
+    "metric_name": "rmse",
+    "final_loss": 322509.8150354892,
+    "train_time": 17.969520330429077,
+    "is_stacked": false
+}

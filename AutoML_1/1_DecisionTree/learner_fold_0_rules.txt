@@ -1,0 +1,14 @@
+if (Samples  > 2.5) and (Samples  > 7.5) and (Species > 0.5) then response: 77867.632 | based on 38 samples
+
+if (Samples  > 2.5) and (Samples  > 7.5) and (Species <= 0.5) then response: 193113.429 | based on 7 samples
+
+if (Samples  > 2.5) and (Samples  <= 7.5) and (Samples  <= 5.5) then response: 139123.667 | based on 3 samples
+
+if (Samples  > 2.5) and (Samples  <= 7.5) and (Samples  > 5.5) then response: 762096.5 | based on 2 samples
+
+if (Samples  <= 2.5) and (Samples  > 1.5) then response: 809390.0 | based on 1 samples
+
+if (Samples  <= 2.5) and (Samples  <= 1.5) and (Samples  > 0.5) then response: 1077717.0 | based on 1 samples
+
+if (Samples  <= 2.5) and (Samples  <= 1.5) and (Samples  <= 0.5) then response: 1335746.0 | based on 1 samples
+

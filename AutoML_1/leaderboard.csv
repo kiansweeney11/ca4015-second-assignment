@@ -1,0 +1,4 @@
+name,model_type,metric_type,metric_value,train_time
+1_DecisionTree,Decision Tree,rmse,322509.8150354892,19.39
+2_Default_RandomForest,Random Forest,rmse,291770.7189170619,11.31
+Ensemble,Ensemble,rmse,291770.718917062,0.32
