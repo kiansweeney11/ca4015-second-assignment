@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary of 2_Linear &#8212; My sample book</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   CA4015 Assignment 2
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../data-processing.html">
+   KNN Impute Experiments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../automl.html">
+   Firstly, let’s load in our data and convert to CSV
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/automl/AutoML_12/2_Linear/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fautoml/AutoML_12/2_Linear/README.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-linear">
+   Logistic Regression (Linear)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validation">
+   Validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimized-metric">
+   Optimized metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-time">
+   Training time
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metric-details">
+     Metric details
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confusion-matrix">
+   Confusion matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-curves">
+   Learning curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coefficients">
+   Coefficients
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coefficients-learner-1">
+     Coefficients learner #1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutation-based-importance">
+   Permutation-based Importance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Confusion Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalized-confusion-matrix">
+   Normalized Confusion Matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-curve">
+   ROC Curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precision-recall-curve">
+   Precision Recall Curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shap-importance">
+   SHAP Importance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shap-dependence-plots">
+   SHAP Dependence plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-0-fold-1">
+     Dependence 0 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-1-fold-1">
+     Dependence 1 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-2-fold-1">
+     Dependence 2 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-3-fold-1">
+     Dependence 3 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-4-fold-1">
+     Dependence 4 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dependence-5-fold-1">
+     Dependence 5 (Fold 1)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shap-decision-plots">
+   SHAP Decision plots
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worst-decisions-for-selected-sample-1-fold-1">
+     Worst decisions for selected sample 1 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worst-decisions-for-selected-sample-2-fold-1">
+     Worst decisions for selected sample 2 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worst-decisions-for-selected-sample-3-fold-1">
+     Worst decisions for selected sample 3 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worst-decisions-for-selected-sample-4-fold-1">
+     Worst decisions for selected sample 4 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-decisions-for-selected-sample-1-fold-1">
+     Best decisions for selected sample 1 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-decisions-for-selected-sample-2-fold-1">
+     Best decisions for selected sample 2 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-decisions-for-selected-sample-3-fold-1">
+     Best decisions for selected sample 3 (Fold 1)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#best-decisions-for-selected-sample-4-fold-1">
+     Best decisions for selected sample 4 (Fold 1)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="summary-of-2-linear">
+<h1>Summary of 2_Linear<a class="headerlink" href="#summary-of-2-linear" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../README.html"><span class="doc std std-doc">&lt;&lt; Go back</span></a></p>
+<div class="section" id="logistic-regression-linear">
+<h2>Logistic Regression (Linear)<a class="headerlink" href="#logistic-regression-linear" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>n_jobs</strong>: -1</p></li>
+<li><p><strong>num_class</strong>: 6</p></li>
+<li><p><strong>explain_level</strong>: 2</p></li>
+</ul>
+</div>
+<div class="section" id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>validation_type</strong>: split</p></li>
+<li><p><strong>train_ratio</strong>: 0.75</p></li>
+<li><p><strong>shuffle</strong>: True</p></li>
+<li><p><strong>stratify</strong>: True</p></li>
+</ul>
+</div>
+<div class="section" id="optimized-metric">
+<h2>Optimized metric<a class="headerlink" href="#optimized-metric" title="Permalink to this headline">¶</a></h2>
+<p>logloss</p>
+</div>
+<div class="section" id="training-time">
+<h2>Training time<a class="headerlink" href="#training-time" title="Permalink to this headline">¶</a></h2>
+<p>20.6 seconds</p>
+<div class="section" id="metric-details">
+<h3>Metric details<a class="headerlink" href="#metric-details" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p></p></th>
+<th class="text-align:right head"><p>0</p></th>
+<th class="text-align:right head"><p>1</p></th>
+<th class="text-align:right head"><p>2</p></th>
+<th class="text-align:right head"><p>3</p></th>
+<th class="text-align:right head"><p>4</p></th>
+<th class="text-align:right head"><p>5</p></th>
+<th class="text-align:right head"><p>accuracy</p></th>
+<th class="text-align:right head"><p>macro avg</p></th>
+<th class="text-align:right head"><p>weighted avg</p></th>
+<th class="text-align:right head"><p>logloss</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>precision</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>0.0940139</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>recall</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>0.0940139</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>f1-score</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>0.0940139</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>support</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>1</p></td>
+<td class="text-align:right"><p>30</p></td>
+<td class="text-align:right"><p>30</p></td>
+<td class="text-align:right"><p>0.0940139</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="confusion-matrix">
+<h2>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p></p></th>
+<th class="text-align:right head"><p>Predicted as 0</p></th>
+<th class="text-align:right head"><p>Predicted as 1</p></th>
+<th class="text-align:right head"><p>Predicted as 2</p></th>
+<th class="text-align:right head"><p>Predicted as 3</p></th>
+<th class="text-align:right head"><p>Predicted as 4</p></th>
+<th class="text-align:right head"><p>Predicted as 5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Labeled as 0</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Labeled as 1</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Labeled as 2</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Labeled as 3</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Labeled as 4</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>5</p></td>
+<td class="text-align:right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Labeled as 5</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>0</p></td>
+<td class="text-align:right"><p>5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="learning-curves">
+<h2>Learning curves<a class="headerlink" href="#learning-curves" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Learning curves" src="../../../_images/learning_curves25.png" /></p>
+</div>
+<div class="section" id="coefficients">
+<h2>Coefficients<a class="headerlink" href="#coefficients" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="coefficients-learner-1">
+<h3>Coefficients learner #1<a class="headerlink" href="#coefficients-learner-1" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p></p></th>
+<th class="text-align:right head"><p>0</p></th>
+<th class="text-align:right head"><p>1</p></th>
+<th class="text-align:right head"><p>2</p></th>
+<th class="text-align:right head"><p>3</p></th>
+<th class="text-align:right head"><p>4</p></th>
+<th class="text-align:right head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>intercept</p></td>
+<td class="text-align:right"><p>0.359875</p></td>
+<td class="text-align:right"><p>0.619081</p></td>
+<td class="text-align:right"><p>-0.202665</p></td>
+<td class="text-align:right"><p>-0.207658</p></td>
+<td class="text-align:right"><p>-0.263494</p></td>
+<td class="text-align:right"><p>-0.305138</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Ethyl Acetate</p></td>
+<td class="text-align:right"><p>0.059353</p></td>
+<td class="text-align:right"><p>-0.3179</p></td>
+<td class="text-align:right"><p>0.482615</p></td>
+<td class="text-align:right"><p>-0.196464</p></td>
+<td class="text-align:right"><p>0.0151252</p></td>
+<td class="text-align:right"><p>-0.0427286</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Ethanol</p></td>
+<td class="text-align:right"><p>-0.297075</p></td>
+<td class="text-align:right"><p>0.148199</p></td>
+<td class="text-align:right"><p>0.409982</p></td>
+<td class="text-align:right"><p>-0.237609</p></td>
+<td class="text-align:right"><p>0.00322674</p></td>
+<td class="text-align:right"><p>-0.0267237</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Propanoic acid, ethyl ester</p></td>
+<td class="text-align:right"><p>0.143516</p></td>
+<td class="text-align:right"><p>0.0950831</p></td>
+<td class="text-align:right"><p>-0.0646912</p></td>
+<td class="text-align:right"><p>0.0819738</p></td>
+<td class="text-align:right"><p>-0.317265</p></td>
+<td class="text-align:right"><p>0.0613838</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Pentanone</p></td>
+<td class="text-align:right"><p>0.197144</p></td>
+<td class="text-align:right"><p>-0.303738</p></td>
+<td class="text-align:right"><p>0.133179</p></td>
+<td class="text-align:right"><p>-0.0265183</p></td>
+<td class="text-align:right"><p>0.022552</p></td>
+<td class="text-align:right"><p>-0.022619</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Decane</p></td>
+<td class="text-align:right"><p>-0.230873</p></td>
+<td class="text-align:right"><p>0.129613</p></td>
+<td class="text-align:right"><p>-0.0337119</p></td>
+<td class="text-align:right"><p>0.244223</p></td>
+<td class="text-align:right"><p>-0.163177</p></td>
+<td class="text-align:right"><p>0.0539264</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Methyl Isobutyl Ketone</p></td>
+<td class="text-align:right"><p>-0.417873</p></td>
+<td class="text-align:right"><p>0.535821</p></td>
+<td class="text-align:right"><p>0.0300208</p></td>
+<td class="text-align:right"><p>-0.0140617</p></td>
+<td class="text-align:right"><p>0.0856699</p></td>
+<td class="text-align:right"><p>-0.219577</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Amylene hydrate</p></td>
+<td class="text-align:right"><p>-0.360668</p></td>
+<td class="text-align:right"><p>0.271216</p></td>
+<td class="text-align:right"><p>0.076625</p></td>
+<td class="text-align:right"><p>0.15137</p></td>
+<td class="text-align:right"><p>0.0301603</p></td>
+<td class="text-align:right"><p>-0.168703</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Butanoic acid, 2-methyl-, methyl ester</p></td>
+<td class="text-align:right"><p>0.161473</p></td>
+<td class="text-align:right"><p>0.0577379</p></td>
+<td class="text-align:right"><p>-0.0373594</p></td>
+<td class="text-align:right"><p>-0.369543</p></td>
+<td class="text-align:right"><p>0.002761</p></td>
+<td class="text-align:right"><p>0.18493</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Isobutyl acetate</p></td>
+<td class="text-align:right"><p>0.0790821</p></td>
+<td class="text-align:right"><p>0.00936977</p></td>
+<td class="text-align:right"><p>0.229475</p></td>
+<td class="text-align:right"><p>-0.262792</p></td>
+<td class="text-align:right"><p>-0.176192</p></td>
+<td class="text-align:right"><p>0.121058</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Methyl isovalerate</p></td>
+<td class="text-align:right"><p>-0.462652</p></td>
+<td class="text-align:right"><p>-0.401519</p></td>
+<td class="text-align:right"><p>0.135081</p></td>
+<td class="text-align:right"><p>-0.00421641</p></td>
+<td class="text-align:right"><p>0.0683388</p></td>
+<td class="text-align:right"><p>0.664968</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1-Propanol</p></td>
+<td class="text-align:right"><p>0.0257026</p></td>
+<td class="text-align:right"><p>-0.0355318</p></td>
+<td class="text-align:right"><p>0.447127</p></td>
+<td class="text-align:right"><p>-0.00655892</p></td>
+<td class="text-align:right"><p>-0.465226</p></td>
+<td class="text-align:right"><p>0.034488</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Methyl thiolacetate</p></td>
+<td class="text-align:right"><p>-0.836053</p></td>
+<td class="text-align:right"><p>0.924418</p></td>
+<td class="text-align:right"><p>-0.157741</p></td>
+<td class="text-align:right"><p>0.19028</p></td>
+<td class="text-align:right"><p>-0.248249</p></td>
+<td class="text-align:right"><p>0.127345</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Butanoic acid, 2-methyl-, ethyl ester</p></td>
+<td class="text-align:right"><p>-0.301211</p></td>
+<td class="text-align:right"><p>0.193774</p></td>
+<td class="text-align:right"><p>0.0494906</p></td>
+<td class="text-align:right"><p>0.0310748</p></td>
+<td class="text-align:right"><p>-0.022748</p></td>
+<td class="text-align:right"><p>0.0496195</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Hexanone</p></td>
+<td class="text-align:right"><p>-0.593422</p></td>
+<td class="text-align:right"><p>-0.48372</p></td>
+<td class="text-align:right"><p>0.111548</p></td>
+<td class="text-align:right"><p>0.244396</p></td>
+<td class="text-align:right"><p>0.535525</p></td>
+<td class="text-align:right"><p>0.185674</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Ethyl isocyanide</p></td>
+<td class="text-align:right"><p>0.0770199</p></td>
+<td class="text-align:right"><p>0.00765749</p></td>
+<td class="text-align:right"><p>-0.132541</p></td>
+<td class="text-align:right"><p>0.0588798</p></td>
+<td class="text-align:right"><p>-0.033671</p></td>
+<td class="text-align:right"><p>0.0226543</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Propanol, 2-methyl-</p></td>
+<td class="text-align:right"><p>-0.201346</p></td>
+<td class="text-align:right"><p>0.513272</p></td>
+<td class="text-align:right"><p>-0.116644</p></td>
+<td class="text-align:right"><p>0.144795</p></td>
+<td class="text-align:right"><p>-0.126411</p></td>
+<td class="text-align:right"><p>-0.213665</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Pentanol, 2-methyl-</p></td>
+<td class="text-align:right"><p>0.22131</p></td>
+<td class="text-align:right"><p>-0.333009</p></td>
+<td class="text-align:right"><p>-0.0566624</p></td>
+<td class="text-align:right"><p>0.250838</p></td>
+<td class="text-align:right"><p>0.0747576</p></td>
+<td class="text-align:right"><p>-0.157235</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Pentanol</p></td>
+<td class="text-align:right"><p>-0.293052</p></td>
+<td class="text-align:right"><p>-0.59868</p></td>
+<td class="text-align:right"><p>0.155907</p></td>
+<td class="text-align:right"><p>0.458444</p></td>
+<td class="text-align:right"><p>0.104135</p></td>
+<td class="text-align:right"><p>0.173244</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1-Butanol, 3-methyl-, acetate</p></td>
+<td class="text-align:right"><p>0.0442464</p></td>
+<td class="text-align:right"><p>-0.0271358</p></td>
+<td class="text-align:right"><p>-0.0238552</p></td>
+<td class="text-align:right"><p>0.00519123</p></td>
+<td class="text-align:right"><p>0.0442817</p></td>
+<td class="text-align:right"><p>-0.0427284</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1 - Undecene</p></td>
+<td class="text-align:right"><p>-0.0251072</p></td>
+<td class="text-align:right"><p>0.0852616</p></td>
+<td class="text-align:right"><p>0.0219857</p></td>
+<td class="text-align:right"><p>-0.562628</p></td>
+<td class="text-align:right"><p>0.0424454</p></td>
+<td class="text-align:right"><p>0.438042</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1-Butanol</p></td>
+<td class="text-align:right"><p>0.116077</p></td>
+<td class="text-align:right"><p>0.120565</p></td>
+<td class="text-align:right"><p>0.0836714</p></td>
+<td class="text-align:right"><p>-0.233809</p></td>
+<td class="text-align:right"><p>0.011236</p></td>
+<td class="text-align:right"><p>-0.0977405</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Heptanone</p></td>
+<td class="text-align:right"><p>-0.256547</p></td>
+<td class="text-align:right"><p>-0.341636</p></td>
+<td class="text-align:right"><p>0.35497</p></td>
+<td class="text-align:right"><p>-0.0239385</p></td>
+<td class="text-align:right"><p>0.3586</p></td>
+<td class="text-align:right"><p>-0.0914491</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Dodecane</p></td>
+<td class="text-align:right"><p>0.0728871</p></td>
+<td class="text-align:right"><p>-0.045672</p></td>
+<td class="text-align:right"><p>-0.0300744</p></td>
+<td class="text-align:right"><p>0.378913</p></td>
+<td class="text-align:right"><p>-0.169258</p></td>
+<td class="text-align:right"><p>-0.206795</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Butanol, 3-methyl-</p></td>
+<td class="text-align:right"><p>-0.574585</p></td>
+<td class="text-align:right"><p>0.112782</p></td>
+<td class="text-align:right"><p>-0.0905943</p></td>
+<td class="text-align:right"><p>0.341758</p></td>
+<td class="text-align:right"><p>-0.0764239</p></td>
+<td class="text-align:right"><p>0.287062</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>S-Methyl 3-methylbutanethioate</p></td>
+<td class="text-align:right"><p>0.140967</p></td>
+<td class="text-align:right"><p>-0.0148687</p></td>
+<td class="text-align:right"><p>0.0305226</p></td>
+<td class="text-align:right"><p>-0.104553</p></td>
+<td class="text-align:right"><p>0.0594052</p></td>
+<td class="text-align:right"><p>-0.111473</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Heptanone, 4,6-dimethyl-</p></td>
+<td class="text-align:right"><p>0.236319</p></td>
+<td class="text-align:right"><p>0.0530389</p></td>
+<td class="text-align:right"><p>-0.057229</p></td>
+<td class="text-align:right"><p>0.11648</p></td>
+<td class="text-align:right"><p>-0.131105</p></td>
+<td class="text-align:right"><p>-0.217504</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3-Buten-1-ol, 3-methyl-</p></td>
+<td class="text-align:right"><p>0.273802</p></td>
+<td class="text-align:right"><p>-0.165164</p></td>
+<td class="text-align:right"><p>-0.127513</p></td>
+<td class="text-align:right"><p>-0.196605</p></td>
+<td class="text-align:right"><p>-0.0723573</p></td>
+<td class="text-align:right"><p>0.287837</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Thiocyanic acid, methyl ester</p></td>
+<td class="text-align:right"><p>0.214577</p></td>
+<td class="text-align:right"><p>0.156428</p></td>
+<td class="text-align:right"><p>0.00172569</p></td>
+<td class="text-align:right"><p>-0.499712</p></td>
+<td class="text-align:right"><p>0.058075</p></td>
+<td class="text-align:right"><p>0.0689066</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Acetoin</p></td>
+<td class="text-align:right"><p>0.30379</p></td>
+<td class="text-align:right"><p>0.199727</p></td>
+<td class="text-align:right"><p>0.0727394</p></td>
+<td class="text-align:right"><p>-0.173715</p></td>
+<td class="text-align:right"><p>-0.274983</p></td>
+<td class="text-align:right"><p>-0.127559</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Pentanol, 2-methyl-</p></td>
+<td class="text-align:right"><p>0.237449</p></td>
+<td class="text-align:right"><p>0.0867375</p></td>
+<td class="text-align:right"><p>-0.218204</p></td>
+<td class="text-align:right"><p>0.122347</p></td>
+<td class="text-align:right"><p>-0.325695</p></td>
+<td class="text-align:right"><p>0.0973648</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Butanoic acid, 3-methyl-, 2-methylbutyl ester</p></td>
+<td class="text-align:right"><p>0.13012</p></td>
+<td class="text-align:right"><p>-0.0568449</p></td>
+<td class="text-align:right"><p>0.0321752</p></td>
+<td class="text-align:right"><p>-0.0400315</p></td>
+<td class="text-align:right"><p>0.0282679</p></td>
+<td class="text-align:right"><p>-0.093687</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Heptanol, 4-methyl-</p></td>
+<td class="text-align:right"><p>0.0998531</p></td>
+<td class="text-align:right"><p>-0.119612</p></td>
+<td class="text-align:right"><p>0.0180945</p></td>
+<td class="text-align:right"><p>0.11894</p></td>
+<td class="text-align:right"><p>0.0274799</p></td>
+<td class="text-align:right"><p>-0.144755</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Nonanone</p></td>
+<td class="text-align:right"><p>-0.0270687</p></td>
+<td class="text-align:right"><p>0.0227672</p></td>
+<td class="text-align:right"><p>-0.409653</p></td>
+<td class="text-align:right"><p>-0.140554</p></td>
+<td class="text-align:right"><p>0.126511</p></td>
+<td class="text-align:right"><p>0.427998</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Acetic acid</p></td>
+<td class="text-align:right"><p>0.106584</p></td>
+<td class="text-align:right"><p>0.197176</p></td>
+<td class="text-align:right"><p>-0.386027</p></td>
+<td class="text-align:right"><p>-0.0367215</p></td>
+<td class="text-align:right"><p>0.129469</p></td>
+<td class="text-align:right"><p>-0.0104803</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Nonanol</p></td>
+<td class="text-align:right"><p>-0.090042</p></td>
+<td class="text-align:right"><p>-0.0142773</p></td>
+<td class="text-align:right"><p>0.0317145</p></td>
+<td class="text-align:right"><p>-0.1756</p></td>
+<td class="text-align:right"><p>-0.0114464</p></td>
+<td class="text-align:right"><p>0.259651</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Pyrrole</p></td>
+<td class="text-align:right"><p>0.0813982</p></td>
+<td class="text-align:right"><p>0.0641335</p></td>
+<td class="text-align:right"><p>-0.0120563</p></td>
+<td class="text-align:right"><p>0.0997906</p></td>
+<td class="text-align:right"><p>0.00585546</p></td>
+<td class="text-align:right"><p>-0.239121</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1H-Pyrrole, 2-methyl-</p></td>
+<td class="text-align:right"><p>0.0381362</p></td>
+<td class="text-align:right"><p>0.00122228</p></td>
+<td class="text-align:right"><p>0.0377338</p></td>
+<td class="text-align:right"><p>-0.0648637</p></td>
+<td class="text-align:right"><p>0.0313116</p></td>
+<td class="text-align:right"><p>-0.0435401</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Heptanol, 2,4-dimethyl-,</p></td>
+<td class="text-align:right"><p>0.113122</p></td>
+<td class="text-align:right"><p>0.13162</p></td>
+<td class="text-align:right"><p>0.212996</p></td>
+<td class="text-align:right"><p>-0.367875</p></td>
+<td class="text-align:right"><p>0.161426</p></td>
+<td class="text-align:right"><p>-0.251288</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Propanoic acid</p></td>
+<td class="text-align:right"><p>-0.870267</p></td>
+<td class="text-align:right"><p>0.643509</p></td>
+<td class="text-align:right"><p>0.00311259</p></td>
+<td class="text-align:right"><p>-0.0529148</p></td>
+<td class="text-align:right"><p>0.2999</p></td>
+<td class="text-align:right"><p>-0.0233404</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Propanoic acid, 2-methyl-</p></td>
+<td class="text-align:right"><p>-0.0823801</p></td>
+<td class="text-align:right"><p>0.0731142</p></td>
+<td class="text-align:right"><p>0.0457488</p></td>
+<td class="text-align:right"><p>-0.0618254</p></td>
+<td class="text-align:right"><p>0.0297018</p></td>
+<td class="text-align:right"><p>-0.00435925</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1-Octanol</p></td>
+<td class="text-align:right"><p>0.000246381</p></td>
+<td class="text-align:right"><p>0.0839154</p></td>
+<td class="text-align:right"><p>0.0232905</p></td>
+<td class="text-align:right"><p>0.0707261</p></td>
+<td class="text-align:right"><p>-0.190152</p></td>
+<td class="text-align:right"><p>0.0119732</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Undecanone</p></td>
+<td class="text-align:right"><p>0.142675</p></td>
+<td class="text-align:right"><p>0.131355</p></td>
+<td class="text-align:right"><p>-0.37669</p></td>
+<td class="text-align:right"><p>-0.299147</p></td>
+<td class="text-align:right"><p>-0.103367</p></td>
+<td class="text-align:right"><p>0.505174</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Benzoic acid, methyl ester</p></td>
+<td class="text-align:right"><p>0.0870761</p></td>
+<td class="text-align:right"><p>0.170954</p></td>
+<td class="text-align:right"><p>0.263753</p></td>
+<td class="text-align:right"><p>-0.280187</p></td>
+<td class="text-align:right"><p>0.128087</p></td>
+<td class="text-align:right"><p>-0.369683</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Butyrolactone</p></td>
+<td class="text-align:right"><p>0.119522</p></td>
+<td class="text-align:right"><p>-0.15416</p></td>
+<td class="text-align:right"><p>0.0425178</p></td>
+<td class="text-align:right"><p>-0.0345861</p></td>
+<td class="text-align:right"><p>0.0139418</p></td>
+<td class="text-align:right"><p>0.0127645</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Decanoic acid, ethyl ester</p></td>
+<td class="text-align:right"><p>0.017683</p></td>
+<td class="text-align:right"><p>-0.00250503</p></td>
+<td class="text-align:right"><p>-0.057153</p></td>
+<td class="text-align:right"><p>0.0327151</p></td>
+<td class="text-align:right"><p>0.00372159</p></td>
+<td class="text-align:right"><p>0.00553828</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Acetic acid, decyl ester</p></td>
+<td class="text-align:right"><p>0.0357553</p></td>
+<td class="text-align:right"><p>0.0109087</p></td>
+<td class="text-align:right"><p>-0.129536</p></td>
+<td class="text-align:right"><p>0.0406049</p></td>
+<td class="text-align:right"><p>0.0428856</p></td>
+<td class="text-align:right"><p>-0.000618581</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Undecanol</p></td>
+<td class="text-align:right"><p>0.173544</p></td>
+<td class="text-align:right"><p>0.0861127</p></td>
+<td class="text-align:right"><p>-0.396699</p></td>
+<td class="text-align:right"><p>0.0688292</p></td>
+<td class="text-align:right"><p>-0.111402</p></td>
+<td class="text-align:right"><p>0.179616</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Butanoic acid, 3-methyl-</p></td>
+<td class="text-align:right"><p>0.452522</p></td>
+<td class="text-align:right"><p>-0.332995</p></td>
+<td class="text-align:right"><p>-0.0182853</p></td>
+<td class="text-align:right"><p>-0.031573</p></td>
+<td class="text-align:right"><p>-0.0947743</p></td>
+<td class="text-align:right"><p>0.0251056</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Dodecanone</p></td>
+<td class="text-align:right"><p>0.0356704</p></td>
+<td class="text-align:right"><p>-0.00908415</p></td>
+<td class="text-align:right"><p>0.0818886</p></td>
+<td class="text-align:right"><p>-0.0122916</p></td>
+<td class="text-align:right"><p>-0.139752</p></td>
+<td class="text-align:right"><p>0.0435691</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Decanol</p></td>
+<td class="text-align:right"><p>0.036867</p></td>
+<td class="text-align:right"><p>0.0307616</p></td>
+<td class="text-align:right"><p>-0.224152</p></td>
+<td class="text-align:right"><p>0.0404395</p></td>
+<td class="text-align:right"><p>0.128163</p></td>
+<td class="text-align:right"><p>-0.0120788</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2-Tridecanone</p></td>
+<td class="text-align:right"><p>0.0894955</p></td>
+<td class="text-align:right"><p>0.00754985</p></td>
+<td class="text-align:right"><p>0.0322462</p></td>
+<td class="text-align:right"><p>0.0291849</p></td>
+<td class="text-align:right"><p>-0.201578</p></td>
+<td class="text-align:right"><p>0.0431017</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Dodecanoic acid, ethyl ester</p></td>
+<td class="text-align:right"><p>-0.00255064</p></td>
+<td class="text-align:right"><p>-0.00225415</p></td>
+<td class="text-align:right"><p>-0.0482731</p></td>
+<td class="text-align:right"><p>0.0322618</p></td>
+<td class="text-align:right"><p>0.013483</p></td>
+<td class="text-align:right"><p>0.00733298</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1,4-Butanediol</p></td>
+<td class="text-align:right"><p>0.0501615</p></td>
+<td class="text-align:right"><p>-0.183084</p></td>
+<td class="text-align:right"><p>0.070711</p></td>
+<td class="text-align:right"><p>-0.00968346</p></td>
+<td class="text-align:right"><p>0.0367001</p></td>
+<td class="text-align:right"><p>0.0351948</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Phenylethyl Alcohol</p></td>
+<td class="text-align:right"><p>-0.0013864</p></td>
+<td class="text-align:right"><p>0.114126</p></td>
+<td class="text-align:right"><p>-0.088896</p></td>
+<td class="text-align:right"><p>0.0865601</p></td>
+<td class="text-align:right"><p>-0.147566</p></td>
+<td class="text-align:right"><p>0.0371625</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Acetophenone, 2’-amino-</p></td>
+<td class="text-align:right"><p>0.0317461</p></td>
+<td class="text-align:right"><p>0.0247866</p></td>
+<td class="text-align:right"><p>0.0277993</p></td>
+<td class="text-align:right"><p>-0.452704</p></td>
+<td class="text-align:right"><p>0.0383099</p></td>
+<td class="text-align:right"><p>0.330063</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Tridecanol</p></td>
+<td class="text-align:right"><p>0.0566713</p></td>
+<td class="text-align:right"><p>0.00395801</p></td>
+<td class="text-align:right"><p>-0.474283</p></td>
+<td class="text-align:right"><p>0.0230735</p></td>
+<td class="text-align:right"><p>0.388735</p></td>
+<td class="text-align:right"><p>0.00184505</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Tetradecanal</p></td>
+<td class="text-align:right"><p>-0.0521117</p></td>
+<td class="text-align:right"><p>0.0173687</p></td>
+<td class="text-align:right"><p>0.149872</p></td>
+<td class="text-align:right"><p>0.0291456</p></td>
+<td class="text-align:right"><p>-0.161441</p></td>
+<td class="text-align:right"><p>0.0171662</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Dodecanol</p></td>
+<td class="text-align:right"><p>0.0573272</p></td>
+<td class="text-align:right"><p>0.0427106</p></td>
+<td class="text-align:right"><p>0.068674</p></td>
+<td class="text-align:right"><p>0.0536239</p></td>
+<td class="text-align:right"><p>-0.244159</p></td>
+<td class="text-align:right"><p>0.0218229</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Methyl tetradecanoate</p></td>
+<td class="text-align:right"><p>0.0713829</p></td>
+<td class="text-align:right"><p>-0.0556794</p></td>
+<td class="text-align:right"><p>-0.336668</p></td>
+<td class="text-align:right"><p>0.00604146</p></td>
+<td class="text-align:right"><p>0.321133</p></td>
+<td class="text-align:right"><p>-0.00620971</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2-Pentadecanone</p></td>
+<td class="text-align:right"><p>0.124908</p></td>
+<td class="text-align:right"><p>-0.0491257</p></td>
+<td class="text-align:right"><p>-0.182311</p></td>
+<td class="text-align:right"><p>0.0112922</p></td>
+<td class="text-align:right"><p>0.0787095</p></td>
+<td class="text-align:right"><p>0.0165267</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Tetradecanoic acid, ethyl ester</p></td>
+<td class="text-align:right"><p>-0.0469712</p></td>
+<td class="text-align:right"><p>-0.0117647</p></td>
+<td class="text-align:right"><p>0.063278</p></td>
+<td class="text-align:right"><p>0.0282242</p></td>
+<td class="text-align:right"><p>-0.0377037</p></td>
+<td class="text-align:right"><p>0.00493738</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Hexadecanal</p></td>
+<td class="text-align:right"><p>-0.0100448</p></td>
+<td class="text-align:right"><p>0.0183656</p></td>
+<td class="text-align:right"><p>0.222512</p></td>
+<td class="text-align:right"><p>0.00694864</p></td>
+<td class="text-align:right"><p>-0.252176</p></td>
+<td class="text-align:right"><p>0.0143939</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>n-Tridecan-1-ol</p></td>
+<td class="text-align:right"><p>0.0973948</p></td>
+<td class="text-align:right"><p>-0.031107</p></td>
+<td class="text-align:right"><p>-0.136436</p></td>
+<td class="text-align:right"><p>0.00130361</p></td>
+<td class="text-align:right"><p>0.0252045</p></td>
+<td class="text-align:right"><p>0.0436397</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Tetradecanol</p></td>
+<td class="text-align:right"><p>0.0571773</p></td>
+<td class="text-align:right"><p>0.0787576</p></td>
+<td class="text-align:right"><p>0.445437</p></td>
+<td class="text-align:right"><p>0.0688769</p></td>
+<td class="text-align:right"><p>-0.702978</p></td>
+<td class="text-align:right"><p>0.0527293</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>n-Pentadecanol</p></td>
+<td class="text-align:right"><p>0.0015776</p></td>
+<td class="text-align:right"><p>-0.0320737</p></td>
+<td class="text-align:right"><p>0.256787</p></td>
+<td class="text-align:right"><p>-0.052872</p></td>
+<td class="text-align:right"><p>-0.160116</p></td>
+<td class="text-align:right"><p>-0.0133032</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1-Hexadecanol</p></td>
+<td class="text-align:right"><p>0.0776509</p></td>
+<td class="text-align:right"><p>-0.0423714</p></td>
+<td class="text-align:right"><p>0.279244</p></td>
+<td class="text-align:right"><p>0.00403445</p></td>
+<td class="text-align:right"><p>-0.335046</p></td>
+<td class="text-align:right"><p>0.0164884</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Indole</p></td>
+<td class="text-align:right"><p>-0.24984</p></td>
+<td class="text-align:right"><p>0.053358</p></td>
+<td class="text-align:right"><p>0.334647</p></td>
+<td class="text-align:right"><p>-0.0357336</p></td>
+<td class="text-align:right"><p>-0.0720801</p></td>
+<td class="text-align:right"><p>-0.0303513</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="permutation-based-importance">
+<h2>Permutation-based Importance<a class="headerlink" href="#permutation-based-importance" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Permutation-based Importance" src="../../../_images/permutation_importance20.png" /></p>
+</div>
+<div class="section" id="id1">
+<h2>Confusion Matrix<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Confusion Matrix" src="../../../_images/confusion_matrix19.png" /></p>
+</div>
+<div class="section" id="normalized-confusion-matrix">
+<h2>Normalized Confusion Matrix<a class="headerlink" href="#normalized-confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Normalized Confusion Matrix" src="../../../_images/confusion_matrix_normalized19.png" /></p>
+</div>
+<div class="section" id="roc-curve">
+<h2>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">¶</a></h2>
+<p><img alt="ROC Curve" src="../../../_images/roc_curve19.png" /></p>
+</div>
+<div class="section" id="precision-recall-curve">
+<h2>Precision Recall Curve<a class="headerlink" href="#precision-recall-curve" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Precision Recall Curve" src="../../../_images/precision_recall_curve19.png" /></p>
+</div>
+<div class="section" id="shap-importance">
+<h2>SHAP Importance<a class="headerlink" href="#shap-importance" title="Permalink to this headline">¶</a></h2>
+<p><img alt="SHAP Importance" src="../../../_images/shap_importance16.png" /></p>
+</div>
+<div class="section" id="shap-dependence-plots">
+<h2>SHAP Dependence plots<a class="headerlink" href="#shap-dependence-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dependence-0-fold-1">
+<h3>Dependence 0 (Fold 1)<a class="headerlink" href="#dependence-0-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_09.png" /></p>
+</div>
+<div class="section" id="dependence-1-fold-1">
+<h3>Dependence 1 (Fold 1)<a class="headerlink" href="#dependence-1-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_19.png" /></p>
+</div>
+<div class="section" id="dependence-2-fold-1">
+<h3>Dependence 2 (Fold 1)<a class="headerlink" href="#dependence-2-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_29.png" /></p>
+</div>
+<div class="section" id="dependence-3-fold-1">
+<h3>Dependence 3 (Fold 1)<a class="headerlink" href="#dependence-3-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_39.png" /></p>
+</div>
+<div class="section" id="dependence-4-fold-1">
+<h3>Dependence 4 (Fold 1)<a class="headerlink" href="#dependence-4-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_49.png" /></p>
+</div>
+<div class="section" id="dependence-5-fold-1">
+<h3>Dependence 5 (Fold 1)<a class="headerlink" href="#dependence-5-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP Dependence from fold 1" src="../../../_images/learner_fold_0_shap_dependence_class_59.png" /></p>
+</div>
+</div>
+<div class="section" id="shap-decision-plots">
+<h2>SHAP Decision plots<a class="headerlink" href="#shap-decision-plots" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="worst-decisions-for-selected-sample-1-fold-1">
+<h3>Worst decisions for selected sample 1 (Fold 1)<a class="headerlink" href="#worst-decisions-for-selected-sample-1-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP worst decisions from Fold 1" src="../../../_images/learner_fold_0_sample_0_worst_decisions13.png" /></p>
+</div>
+<div class="section" id="worst-decisions-for-selected-sample-2-fold-1">
+<h3>Worst decisions for selected sample 2 (Fold 1)<a class="headerlink" href="#worst-decisions-for-selected-sample-2-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP worst decisions from Fold 1" src="../../../_images/learner_fold_0_sample_1_worst_decisions13.png" /></p>
+</div>
+<div class="section" id="worst-decisions-for-selected-sample-3-fold-1">
+<h3>Worst decisions for selected sample 3 (Fold 1)<a class="headerlink" href="#worst-decisions-for-selected-sample-3-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP worst decisions from Fold 1" src="../../../_images/learner_fold_0_sample_2_worst_decisions13.png" /></p>
+</div>
+<div class="section" id="worst-decisions-for-selected-sample-4-fold-1">
+<h3>Worst decisions for selected sample 4 (Fold 1)<a class="headerlink" href="#worst-decisions-for-selected-sample-4-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP worst decisions from Fold 1" src="../../../_images/learner_fold_0_sample_3_worst_decisions13.png" /></p>
+</div>
+<div class="section" id="best-decisions-for-selected-sample-1-fold-1">
+<h3>Best decisions for selected sample 1 (Fold 1)<a class="headerlink" href="#best-decisions-for-selected-sample-1-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP best decisions from Fold 1" src="../../../_images/learner_fold_0_sample_0_best_decisions13.png" /></p>
+</div>
+<div class="section" id="best-decisions-for-selected-sample-2-fold-1">
+<h3>Best decisions for selected sample 2 (Fold 1)<a class="headerlink" href="#best-decisions-for-selected-sample-2-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP best decisions from Fold 1" src="../../../_images/learner_fold_0_sample_1_best_decisions13.png" /></p>
+</div>
+<div class="section" id="best-decisions-for-selected-sample-3-fold-1">
+<h3>Best decisions for selected sample 3 (Fold 1)<a class="headerlink" href="#best-decisions-for-selected-sample-3-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP best decisions from Fold 1" src="../../../_images/learner_fold_0_sample_2_best_decisions13.png" /></p>
+</div>
+<div class="section" id="best-decisions-for-selected-sample-4-fold-1">
+<h3>Best decisions for selected sample 4 (Fold 1)<a class="headerlink" href="#best-decisions-for-selected-sample-4-fold-1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SHAP best decisions from Fold 1" src="../../../_images/learner_fold_0_sample_3_best_decisions13.png" /></p>
+<p><a class="reference internal" href="../README.html"><span class="doc std std-doc">&lt;&lt; Go back</span></a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./automl\AutoML_12\2_Linear"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

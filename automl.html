@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firstly, let’s load in our data and convert to CSV &#8212; My sample book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="KNN Impute Experiments" href="data-processing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   CA4015 Assignment 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-processing.html">
+   KNN Impute Experiments
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Firstly, let’s load in our data and convert to CSV
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/automl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fautoml.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/automl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">ExcelWriter</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">ExcelFile</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">supervised.automl</span> <span class="kn">import</span> <span class="n">AutoML</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_32332</span><span class="o">/</span><span class="mf">3999718835.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">supervised.automl</span> <span class="kn">import</span> <span class="n">AutoML</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;supervised&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="firstly-let-s-load-in-our-data-and-convert-to-csv">
+<h1>Firstly, let’s load in our data and convert to CSV<a class="headerlink" href="#firstly-let-s-load-in-our-data-and-convert-to-csv" title="Permalink to this headline">¶</a></h1>
+<p>I try automl with numbered features to predict strains now. I also use imputed target variables now instead of our targets with NaN present.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/FrontiersDS.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Wide&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imputed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/imputed_wide.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/features_wide.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;Strain&#39;</span><span class="p">]</span>
+<span class="n">exit_status_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SA_A&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;SA_B&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="p">,</span><span class="s1">&#39;EC_A&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;PA_A&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;EC_B&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;PA_B&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">exit_status_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xyz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3     0
+4     0
+5     0
+6     0
+7     0
+     ..
+82    4
+83    4
+84    4
+85    4
+86    4
+Name: Strain, Length: 84, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_11
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.599139 trained in 30.84 seconds
+2_Linear logloss 0.34405 trained in 20.31 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.116492 trained in 34.56 seconds
+4_Default_RandomForest logloss 0.67374 trained in 23.93 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 1.252451 trained in 4.52 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.116492 trained in 0.4 seconds
+AutoML fit time: 149.7 seconds
+AutoML best model: 3_Default_Xgboost
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           2       2
+1           4       4
+2           0       1
+3           4       4
+4           3       3
+5           2       2
+6           4       4
+7           2       2
+8           2       2
+9           1       1
+10          5       5
+11          1       1
+12          3       3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">accuracy_auto</span><span class="p">(</span><span class="n">array_pred</span><span class="p">,</span> <span class="n">array_target</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">zx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">array_target</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">array_pred</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">array_pred</span><span class="p">[</span><span class="s1">&#39;Strain&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">zx</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">array_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9230769230769231
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-Validation for 15:85 split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.46153846153846156
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33 accuracy with a standard deviation of 0.24
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The least populated class in y has only 1 members, which is less than n_splits=4.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train30</span><span class="p">,</span> <span class="n">X_test30</span><span class="p">,</span> <span class="n">y_train30</span><span class="p">,</span> <span class="n">y_test30</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train30</span><span class="p">,</span> <span class="n">y_train30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_12
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.386876 trained in 34.19 seconds
+2_Linear logloss 0.094014 trained in 20.64 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.049986 trained in 27.98 seconds
+4_Default_RandomForest logloss 0.777886 trained in 31.48 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 0.550311 trained in 4.41 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.049986 trained in 0.37 seconds
+AutoML fit time: 157.78 seconds
+AutoML best model: 3_Default_Xgboost
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted30</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test30</span><span class="p">)</span>
+<span class="n">y_predicted30</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted30</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted30</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test30</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           4       4
+1           0       0
+2           1       1
+3           4       4
+4           0       0
+5           3       5
+6           0       0
+7           0       0
+8           3       3
+9           5       5
+10          3       3
+11          0       0
+12          0       1
+13          1       0
+14          2       2
+15          4       4
+16          5       5
+17          3       3
+18          0       0
+19          5       5
+20          2       2
+21          1       1
+22          2       2
+23          0       1
+24          2       2
+25          3       3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted30</span><span class="p">,</span> <span class="n">y_test30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8461538461538461
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-Validation for 30:70 split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf30</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train30</span><span class="p">,</span> <span class="n">y_train30</span><span class="p">)</span>
+<span class="n">clf30</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test30</span><span class="p">,</span> <span class="n">y_test30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7692307692307693
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test30</span><span class="p">,</span> <span class="n">y_test30</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.54 accuracy with a standard deviation of 0.17
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The least populated class in y has only 3 members, which is less than n_splits=4.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train40</span><span class="p">,</span> <span class="n">X_test40</span><span class="p">,</span> <span class="n">y_train40</span><span class="p">,</span> <span class="n">y_test40</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train40</span><span class="p">,</span> <span class="n">y_train40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_13
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.565435 trained in 33.87 seconds
+2_Linear logloss 0.061669 trained in 20.66 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.086053 trained in 29.81 seconds
+4_Default_RandomForest logloss 0.650587 trained in 23.67 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 0.387216 trained in 4.51 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.061669 trained in 0.35 seconds
+AutoML fit time: 151.07 seconds
+AutoML best model: 2_Linear
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted40</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test40</span><span class="p">)</span>
+<span class="n">y_predicted40</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted40</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted40</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test40</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           4       4
+1           0       0
+2           1       1
+3           4       4
+4           0       0
+5           3       5
+6           3       0
+7           3       0
+8           3       3
+9           5       5
+10          3       3
+11          2       0
+12          0       1
+13          1       0
+14          2       2
+15          4       4
+16          5       5
+17          5       3
+18          0       0
+19          5       5
+20          0       2
+21          1       1
+22          2       2
+23          1       1
+24          2       2
+25          3       3
+26          5       5
+27          5       5
+28          1       0
+29          1       1
+30          5       3
+31          0       1
+32          3       3
+33          0       2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted40</span><span class="p">,</span> <span class="n">y_test40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6470588235294118
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-Validation for 40:60 split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf40</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train40</span><span class="p">,</span> <span class="n">y_train40</span><span class="p">)</span>
+<span class="n">clf40</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test40</span><span class="p">,</span> <span class="n">y_test40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6470588235294118
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test40</span><span class="p">,</span> <span class="n">y_test40</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.59 accuracy with a standard deviation of 0.14
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The least populated class in y has only 3 members, which is less than n_splits=4.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train50</span><span class="p">,</span> <span class="n">X_test50</span><span class="p">,</span> <span class="n">y_train50</span><span class="p">,</span> <span class="n">y_test50</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train50</span><span class="p">,</span> <span class="n">y_train50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_14
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.020865 trained in 23.47 seconds
+2_Linear logloss 0.061263 trained in 19.54 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.051239 trained in 23.53 seconds
+4_Default_RandomForest logloss 0.627161 trained in 24.0 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 0.446942 trained in 4.81 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.020865 trained in 0.41 seconds
+AutoML fit time: 133.95 seconds
+AutoML best model: 1_DecisionTree
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted50</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test50</span><span class="p">)</span>
+<span class="n">y_predicted50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted50</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted50</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test50</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           4       4
+1           1       0
+2           1       1
+3           4       4
+4           0       0
+5           3       5
+6           0       0
+7           0       0
+8           3       3
+9           5       5
+10          3       3
+11          0       0
+12          0       1
+13          1       0
+14          2       2
+15          4       4
+16          5       5
+17          5       3
+18          0       0
+19          5       5
+20          1       2
+21          1       1
+22          4       2
+23          0       1
+24          2       2
+25          3       3
+26          5       5
+27          5       5
+28          0       0
+29          1       1
+30          5       3
+31          1       1
+32          3       3
+33          1       2
+34          3       3
+35          3       5
+36          2       2
+37          1       0
+38          0       0
+39          4       4
+40          4       2
+41          2       2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted50</span><span class="p">,</span> <span class="n">y_test50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6904761904761905
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-Validation for 50:50 split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf50</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train50</span><span class="p">,</span> <span class="n">y_train50</span><span class="p">)</span>
+<span class="n">clf50</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test50</span><span class="p">,</span> <span class="n">y_test50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5952380952380952
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test50</span><span class="p">,</span> <span class="n">y_test50</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.57 accuracy with a standard deviation of 0.13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train25</span><span class="p">,</span> <span class="n">X_test25</span><span class="p">,</span> <span class="n">y_train25</span><span class="p">,</span> <span class="n">y_test25</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train25</span><span class="p">,</span> <span class="n">y_train25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_15
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.840242 trained in 24.98 seconds
+2_Linear logloss 0.330437 trained in 20.24 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.089317 trained in 25.17 seconds
+4_Default_RandomForest logloss 0.722411 trained in 23.44 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 1.335658 trained in 4.52 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.089317 trained in 0.34 seconds
+AutoML fit time: 138.93 seconds
+AutoML best model: 3_Default_Xgboost
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted25</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test25</span><span class="p">)</span>
+<span class="n">y_predicted25</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted25</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted25</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test25</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           2       4
+1           0       0
+2           1       1
+3           4       4
+4           0       0
+5           3       5
+6           0       0
+7           0       0
+8           3       3
+9           5       5
+10          3       3
+11          0       0
+12          0       1
+13          1       0
+14          2       2
+15          4       4
+16          5       5
+17          3       3
+18          0       0
+19          5       5
+20          2       2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted25</span><span class="p">,</span> <span class="n">y_test25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8095238095238095
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-Validation for 25:75 split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf25</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train25</span><span class="p">,</span> <span class="n">y_train25</span><span class="p">)</span>
+<span class="n">clf25</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test25</span><span class="p">,</span> <span class="n">y_test25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7142857142857143
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test25</span><span class="p">,</span> <span class="n">y_test25</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.45 accuracy with a standard deviation of 0.30
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The least populated class in y has only 2 members, which is less than n_splits=4.
+</pre></div>
+</div>
+</div>
+</div>
+<p>I can now use Cross Validation due to me numbering the strain feature. This allows me to verify our estimators performance. Our accuracy values are much higher on each threshold. The highest accuracy we achieve is also the lowest CV score which suggests this model is not a good one to implement. The sweet spot split here appears to be between 25 and 30% training to test split as the accuracy scores maintain a high level while also possessing a high CV score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train20</span><span class="p">,</span> <span class="n">X_test20</span><span class="p">,</span> <span class="n">y_train20</span><span class="p">,</span> <span class="n">y_test20</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">imputed</span><span class="p">,</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">automl</span> <span class="o">=</span> <span class="n">AutoML</span><span class="p">(</span><span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Xgboost&quot;</span><span class="p">],</span> <span class="n">total_time_limit</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train20</span><span class="p">,</span> <span class="n">y_train20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML directory: AutoML_1
+The task is multiclass_classification with evaluation metric logloss
+AutoML will use algorithms: [&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;, &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;]
+AutoML will ensemble available models
+AutoML steps: [&#39;simple_algorithms&#39;, &#39;default_algorithms&#39;, &#39;ensemble&#39;]
+* Step simple_algorithms will try to check up to 2 models
+1_DecisionTree logloss 0.39767 trained in 21.74 seconds
+2_Linear logloss 0.152763 trained in 21.28 seconds
+* Step default_algorithms will try to check up to 3 models
+3_Default_Xgboost logloss 0.121691 trained in 29.16 seconds
+4_Default_RandomForest logloss 0.777808 trained in 42.39 seconds
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+X does not have valid feature names, but KNeighborsClassifier was fitted with feature names
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception while producing SHAP explanations. &#39;NoneType&#39; object has no attribute &#39;shap_values&#39;
+Continuing ...
+5_Default_NearestNeighbors logloss 0.518977 trained in 6.69 seconds
+* Step ensemble will try to check up to 1 model
+Ensemble logloss 0.121691 trained in 0.41 seconds
+AutoML fit time: 164.95 seconds
+AutoML best model: 3_Default_Xgboost
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AutoML(algorithms=[&#39;Decision Tree&#39;, &#39;Linear&#39;, &#39;Random Forest&#39;,
+                   &#39;Nearest Neighbors&#39;, &#39;Xgboost&#39;],
+       total_time_limit=300)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted20</span> <span class="o">=</span> <span class="n">automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test20</span><span class="p">)</span>
+<span class="n">y_predicted20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_predicted20</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Strain&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">y_predicted20</span><span class="p">[</span><span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="s2">&quot;Target&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test20</span><span class="p">)}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Predicted  Target
+0           4       4
+1           0       0
+2           1       1
+3           4       4
+4           0       0
+5           3       5
+6           0       0
+7           0       0
+8           3       3
+9           5       5
+10          3       3
+11          0       0
+12          0       1
+13          1       0
+14          2       2
+15          4       4
+16          5       5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy_auto</span><span class="p">(</span><span class="n">y_predicted20</span><span class="p">,</span> <span class="n">y_test20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8235294117647058
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">clf20</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train20</span><span class="p">,</span> <span class="n">y_train20</span><span class="p">)</span>
+<span class="n">clf20</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test20</span><span class="p">,</span> <span class="n">y_test20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7058823529411765
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test20</span><span class="p">,</span> <span class="n">y_test20</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24 accuracy with a standard deviation of 0.18
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The least populated class in y has only 1 members, which is less than n_splits=4.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="data-processing.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">KNN Impute Experiments</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

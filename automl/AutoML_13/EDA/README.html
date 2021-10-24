@@ -1,0 +1,1759 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploratory Data Analysis &#8212; My sample book</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   CA4015 Assignment 2
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../data-processing.html">
+   KNN Impute Experiments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../automl.html">
+   Firstly, let’s load in our data and convert to CSV
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/automl/AutoML_13/EDA/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fautoml/AutoML_13/EDA/README.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-target">
+   Feature : target
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-ethyl-acetate">
+   Feature :  Ethyl Acetate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-ethanol">
+   Feature : Ethanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-propanoic-acid-ethyl-ester">
+   Feature : Propanoic acid, ethyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-pentanone">
+   Feature : 2-Pentanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-decane">
+   Feature : Decane
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-methyl-isobutyl-ketone">
+   Feature : Methyl Isobutyl Ketone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-amylene-hydrate">
+   Feature : Amylene hydrate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-butanoic-acid-2-methyl-methyl-ester">
+   Feature : Butanoic acid, 2-methyl-, methyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-isobutyl-acetate">
+   Feature : Isobutyl acetate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-methyl-isovalerate">
+   Feature : Methyl isovalerate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-propanol">
+   Feature : 1-Propanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-methyl-thiolacetate">
+   Feature : Methyl thiolacetate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-butanoic-acid-2-methyl-ethyl-ester">
+   Feature : Butanoic acid, 2-methyl-, ethyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-hexanone">
+   Feature : 2-Hexanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-ethyl-isocyanide">
+   Feature : Ethyl isocyanide
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-propanol-2-methyl">
+   Feature : 1-Propanol, 2-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-pentanol-2-methyl">
+   Feature : 2-Pentanol, 2-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-pentanol">
+   Feature : 2-Pentanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-butanol-3-methyl-acetate">
+   Feature : 1-Butanol, 3-methyl-, acetate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-undecene">
+   Feature : 1 - Undecene
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-butanol">
+   Feature : 1-Butanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-heptanone">
+   Feature : 2-Heptanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-dodecane">
+   Feature : Dodecane
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-butanol-3-methyl">
+   Feature : 1-Butanol, 3-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-s-methyl-3-methylbutanethioate">
+   Feature :  S-Methyl 3-methylbutanethioate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-heptanone-4-6-dimethyl">
+   Feature : 2-Heptanone, 4,6-dimethyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-3-buten-1-ol-3-methyl">
+   Feature :  3-Buten-1-ol, 3-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-thiocyanic-acid-methyl-ester">
+   Feature : Thiocyanic acid, methyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-acetoin">
+   Feature : Acetoin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-pentanol-2-methyl">
+   Feature : 1-Pentanol, 2-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-butanoic-acid-3-methyl-2-methylbutyl-ester">
+   Feature : Butanoic acid, 3-methyl-, 2-methylbutyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-heptanol-4-methyl">
+   Feature : 2-Heptanol, 4-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-nonanone">
+   Feature : 2-Nonanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-acetic-acid">
+   Feature : Acetic acid
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-nonanol">
+   Feature : 2-Nonanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-pyrrole">
+   Feature : Pyrrole
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1h-pyrrole-2-methyl">
+   Feature : 1H-Pyrrole, 2-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-heptanol-2-4-dimethyl">
+   Feature : 1-Heptanol, 2,4-dimethyl-,
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-propanoic-acid">
+   Feature : Propanoic acid
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-propanoic-acid-2-methyl">
+   Feature : Propanoic acid, 2-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-octanol">
+   Feature : 1-Octanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-undecanone">
+   Feature : 2-Undecanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-benzoic-acid-methyl-ester">
+   Feature : Benzoic acid, methyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-butyrolactone">
+   Feature : Butyrolactone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-decanoic-acid-ethyl-ester">
+   Feature :  Decanoic acid, ethyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-acetic-acid-decyl-ester">
+   Feature : Acetic acid, decyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-undecanol">
+   Feature : 2-Undecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-butanoic-acid-3-methyl">
+   Feature : Butanoic acid, 3-methyl-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-dodecanone">
+   Feature : 2-Dodecanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-decanol">
+   Feature : 1-Decanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-tridecanone">
+   Feature : 2-Tridecanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-dodecanoic-acid-ethyl-ester">
+   Feature :  Dodecanoic acid, ethyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-4-butanediol">
+   Feature : 1,4-Butanediol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-phenylethyl-alcohol">
+   Feature : Phenylethyl Alcohol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-acetophenone-2-amino">
+   Feature : Acetophenone, 2’-amino-
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-tridecanol">
+   Feature : 2-Tridecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-tetradecanal">
+   Feature : Tetradecanal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-dodecanol">
+   Feature : 1-Dodecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-methyl-tetradecanoate">
+   Feature : Methyl tetradecanoate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-2-pentadecanone">
+   Feature :  2-Pentadecanone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-tetradecanoic-acid-ethyl-ester">
+   Feature : Tetradecanoic acid, ethyl ester
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-hexadecanal">
+   Feature : Hexadecanal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-n-tridecan-1-ol">
+   Feature : n-Tridecan-1-ol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-tetradecanol">
+   Feature : 1-Tetradecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-n-pentadecanol">
+   Feature : n-Pentadecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-1-hexadecanol">
+   Feature :  1-Hexadecanol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-indole">
+   Feature : Indole
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exploratory-data-analysis">
+<h1>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../README.html"><span class="doc std std-doc">&lt;&lt; Go back</span></a></p>
+<div class="section" id="feature-target">
+<h2>Feature : target<a class="headerlink" href="#feature-target" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : discrete</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 6</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :2.52</p></li>
+<li><p><strong>Std</strong> :1.6566501730656256</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 1.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 2.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 4.0</p></li>
+<li><p><strong>Max</strong> :5.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/target4.png" /></p>
+</div>
+<div class="section" id="feature-ethyl-acetate">
+<h2>Feature :  Ethyl Acetate<a class="headerlink" href="#feature-ethyl-acetate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 34</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :241719.83277108436</p></li>
+<li><p><strong>Std</strong> :288504.35724400193</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 146897.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 359498.0</p></li>
+<li><p><strong>Max</strong> :1077717.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_Ethyl_Acetate3.png" /></p>
+</div>
+<div class="section" id="feature-ethanol">
+<h2>Feature : Ethanol<a class="headerlink" href="#feature-ethanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 44</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :2254886.86</p></li>
+<li><p><strong>Std</strong> :2458213.9046446397</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 253299.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 1214585.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 3546757.75</p></li>
+<li><p><strong>Max</strong> :8155560.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Ethanol3.png" /></p>
+</div>
+<div class="section" id="feature-propanoic-acid-ethyl-ester">
+<h2>Feature : Propanoic acid, ethyl ester<a class="headerlink" href="#feature-propanoic-acid-ethyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 3</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :13135.752592592595</p></li>
+<li><p><strong>Std</strong> :15137.98020675828</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 17989.40740740741</p></li>
+<li><p><strong>75%th Percentile</strong> : 17989.40740740741</p></li>
+<li><p><strong>Max</strong> :99116.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Propanoic_acid_ethyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-2-pentanone">
+<h2>Feature : 2-Pentanone<a class="headerlink" href="#feature-2-pentanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 48</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :1023560.18</p></li>
+<li><p><strong>Std</strong> :933441.6299633529</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 445433.5</p></li>
+<li><p><strong>50%th Percentile</strong> : 607125.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 1324438.75</p></li>
+<li><p><strong>Max</strong> :3917970.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Pentanone3.png" /></p>
+</div>
+<div class="section" id="feature-decane">
+<h2>Feature : Decane<a class="headerlink" href="#feature-decane" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 26</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :240121.64</p></li>
+<li><p><strong>Std</strong> :308758.4830382347</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 7.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 455906.0</p></li>
+<li><p><strong>Max</strong> :1105838.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Decane3.png" /></p>
+</div>
+<div class="section" id="feature-methyl-isobutyl-ketone">
+<h2>Feature : Methyl Isobutyl Ketone<a class="headerlink" href="#feature-methyl-isobutyl-ketone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 13</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :219746.27333333343</p></li>
+<li><p><strong>Std</strong> :303591.7775082141</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 218195.5614035088</p></li>
+<li><p><strong>75%th Percentile</strong> : 218195.5614035088</p></li>
+<li><p><strong>Max</strong> :1309090.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Methyl_Isobutyl_Ketone3.png" /></p>
+</div>
+<div class="section" id="feature-amylene-hydrate">
+<h2>Feature : Amylene hydrate<a class="headerlink" href="#feature-amylene-hydrate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 24</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :92544.26</p></li>
+<li><p><strong>Std</strong> :148321.4814024618</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 149430.0</p></li>
+<li><p><strong>Max</strong> :694251.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Amylene_hydrate3.png" /></p>
+</div>
+<div class="section" id="feature-butanoic-acid-2-methyl-methyl-ester">
+<h2>Feature : Butanoic acid, 2-methyl-, methyl ester<a class="headerlink" href="#feature-butanoic-acid-2-methyl-methyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 5</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :264185.9925925925</p></li>
+<li><p><strong>Std</strong> :263622.96796798095</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 287247.7037037037</p></li>
+<li><p><strong>50%th Percentile</strong> : 287247.7037037037</p></li>
+<li><p><strong>75%th Percentile</strong> : 287247.7037037037</p></li>
+<li><p><strong>Max</strong> :1437190.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Butanoic_acid_2-methyl-_methyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-isobutyl-acetate">
+<h2>Feature : Isobutyl acetate<a class="headerlink" href="#feature-isobutyl-acetate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 9</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :40411.84518518516</p></li>
+<li><p><strong>Std</strong> :72540.76032813931</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 46016.2037037037</p></li>
+<li><p><strong>Max</strong> :381024.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Isobutyl_acetate3.png" /></p>
+</div>
+<div class="section" id="feature-methyl-isovalerate">
+<h2>Feature : Methyl isovalerate<a class="headerlink" href="#feature-methyl-isovalerate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 8</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :85447.35333333332</p></li>
+<li><p><strong>Std</strong> :129890.46860462971</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 97276.9298245614</p></li>
+<li><p><strong>75%th Percentile</strong> : 97276.9298245614</p></li>
+<li><p><strong>Max</strong> :608115.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Methyl_isovalerate3.png" /></p>
+</div>
+<div class="section" id="feature-1-propanol">
+<h2>Feature : 1-Propanol<a class="headerlink" href="#feature-1-propanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 9</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :330823.1577777777</p></li>
+<li><p><strong>Std</strong> :383313.6384297382</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 157180.75</p></li>
+<li><p><strong>50%th Percentile</strong> : 317293.22222222225</p></li>
+<li><p><strong>75%th Percentile</strong> : 317293.22222222225</p></li>
+<li><p><strong>Max</strong> :1821750.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Propanol3.png" /></p>
+</div>
+<div class="section" id="feature-methyl-thiolacetate">
+<h2>Feature : Methyl thiolacetate<a class="headerlink" href="#feature-methyl-thiolacetate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 33</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :101203.94</p></li>
+<li><p><strong>Std</strong> :103383.37114074439</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 83453.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 168740.5</p></li>
+<li><p><strong>Max</strong> :352289.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Methyl_thiolacetate3.png" /></p>
+</div>
+<div class="section" id="feature-butanoic-acid-2-methyl-ethyl-ester">
+<h2>Feature : Butanoic acid, 2-methyl-, ethyl ester<a class="headerlink" href="#feature-butanoic-acid-2-methyl-ethyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 17</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :817916.1746666665</p></li>
+<li><p><strong>Std</strong> :401221.9279266553</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 713709.4333333333</p></li>
+<li><p><strong>50%th Percentile</strong> : 713709.4333333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 713709.4333333333</p></li>
+<li><p><strong>Max</strong> :2198502.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Butanoic_acid_2-methyl-_ethyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-2-hexanone">
+<h2>Feature : 2-Hexanone<a class="headerlink" href="#feature-2-hexanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 13</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :38838.32421052631</p></li>
+<li><p><strong>Std</strong> :50392.21384851915</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 39797.61403508772</p></li>
+<li><p><strong>75%th Percentile</strong> : 39797.61403508772</p></li>
+<li><p><strong>Max</strong> :183084.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Hexanone3.png" /></p>
+</div>
+<div class="section" id="feature-ethyl-isocyanide">
+<h2>Feature : Ethyl isocyanide<a class="headerlink" href="#feature-ethyl-isocyanide" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 6</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :18661.46</p></li>
+<li><p><strong>Std</strong> :20749.44154764614</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 19984.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 19984.0</p></li>
+<li><p><strong>Max</strong> :105656.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Ethyl_isocyanide3.png" /></p>
+</div>
+<div class="section" id="feature-1-propanol-2-methyl">
+<h2>Feature : 1-Propanol, 2-methyl-<a class="headerlink" href="#feature-1-propanol-2-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 43</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :222319.46</p></li>
+<li><p><strong>Std</strong> :180729.06325172307</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 61524.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 205089.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 358615.25</p></li>
+<li><p><strong>Max</strong> :613288.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Propanol_2-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-2-pentanol-2-methyl">
+<h2>Feature : 2-Pentanol, 2-methyl-<a class="headerlink" href="#feature-2-pentanol-2-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 18</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :30976.013253012046</p></li>
+<li><p><strong>Std</strong> :50216.79552057735</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 60784.5</p></li>
+<li><p><strong>Max</strong> :197683.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Pentanol_2-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-2-pentanol">
+<h2>Feature : 2-Pentanol<a class="headerlink" href="#feature-2-pentanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 16</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :281735.1666666665</p></li>
+<li><p><strong>Std</strong> :426732.92941427516</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 265630.649122807</p></li>
+<li><p><strong>75%th Percentile</strong> : 265630.649122807</p></li>
+<li><p><strong>Max</strong> :2282603.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Pentanol3.png" /></p>
+</div>
+<div class="section" id="feature-1-butanol-3-methyl-acetate">
+<h2>Feature : 1-Butanol, 3-methyl-, acetate<a class="headerlink" href="#feature-1-butanol-3-methyl-acetate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 7</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :24481.535999999986</p></li>
+<li><p><strong>Std</strong> :32892.44193657447</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 19126.2</p></li>
+<li><p><strong>50%th Percentile</strong> : 19126.2</p></li>
+<li><p><strong>75%th Percentile</strong> : 19126.2</p></li>
+<li><p><strong>Max</strong> :156927.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Butanol_3-methyl-_acetate3.png" /></p>
+</div>
+<div class="section" id="feature-1-undecene">
+<h2>Feature : 1 - Undecene<a class="headerlink" href="#feature-1-undecene" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 16</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :5369591.012592591</p></li>
+<li><p><strong>Std</strong> :1975954.6987178533</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 5627687.703703703</p></li>
+<li><p><strong>50%th Percentile</strong> : 5627687.703703703</p></li>
+<li><p><strong>75%th Percentile</strong> : 5627687.703703703</p></li>
+<li><p><strong>Max</strong> :10477684.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1_-_Undecene3.png" /></p>
+</div>
+<div class="section" id="feature-1-butanol">
+<h2>Feature : 1-Butanol<a class="headerlink" href="#feature-1-butanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 30</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :1392187.873333333</p></li>
+<li><p><strong>Std</strong> :1117135.9661465273</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 518589.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 1456599.6666666667</p></li>
+<li><p><strong>75%th Percentile</strong> : 1456599.6666666667</p></li>
+<li><p><strong>Max</strong> :3989960.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Butanol3.png" /></p>
+</div>
+<div class="section" id="feature-2-heptanone">
+<h2>Feature : 2-Heptanone<a class="headerlink" href="#feature-2-heptanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 28</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :128702.0</p></li>
+<li><p><strong>Std</strong> :192574.30068396553</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 68723.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 180497.5</p></li>
+<li><p><strong>Max</strong> :1022779.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Heptanone3.png" /></p>
+</div>
+<div class="section" id="feature-dodecane">
+<h2>Feature : Dodecane<a class="headerlink" href="#feature-dodecane" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 4</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :12237.886666666669</p></li>
+<li><p><strong>Std</strong> :38779.31606495081</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 16751.333333333332</p></li>
+<li><p><strong>Max</strong> :265644.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Dodecane3.png" /></p>
+</div>
+<div class="section" id="feature-1-butanol-3-methyl">
+<h2>Feature : 1-Butanol, 3-methyl-<a class="headerlink" href="#feature-1-butanol-3-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 50</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :7125776.8</p></li>
+<li><p><strong>Std</strong> :7517505.945176336</p></li>
+<li><p><strong>Min</strong> :908313.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 2362158.25</p></li>
+<li><p><strong>50%th Percentile</strong> : 4998857.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 8338310.5</p></li>
+<li><p><strong>Max</strong> :37125000.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Butanol_3-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-s-methyl-3-methylbutanethioate">
+<h2>Feature :  S-Methyl 3-methylbutanethioate<a class="headerlink" href="#feature-s-methyl-3-methylbutanethioate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 16</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :358648.5333333335</p></li>
+<li><p><strong>Std</strong> :156021.16314416172</p></li>
+<li><p><strong>Min</strong> :89553.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 334880.3333333333</p></li>
+<li><p><strong>50%th Percentile</strong> : 334880.3333333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 334880.3333333333</p></li>
+<li><p><strong>Max</strong> :1013976.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_S-Methyl_3-methylbutanethioate3.png" /></p>
+</div>
+<div class="section" id="feature-2-heptanone-4-6-dimethyl">
+<h2>Feature : 2-Heptanone, 4,6-dimethyl-<a class="headerlink" href="#feature-2-heptanone-4-6-dimethyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 14</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :47556.62814814816</p></li>
+<li><p><strong>Std</strong> :54467.43970956811</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 59419.96296296296</p></li>
+<li><p><strong>75%th Percentile</strong> : 59419.96296296296</p></li>
+<li><p><strong>Max</strong> :228006.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Heptanone_46-dimethyl-3.png" /></p>
+</div>
+<div class="section" id="feature-3-buten-1-ol-3-methyl">
+<h2>Feature :  3-Buten-1-ol, 3-methyl-<a class="headerlink" href="#feature-3-buten-1-ol-3-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 39</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :148693.76</p></li>
+<li><p><strong>Std</strong> :158960.77110722146</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 57801.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 102848.5</p></li>
+<li><p><strong>75%th Percentile</strong> : 158281.5</p></li>
+<li><p><strong>Max</strong> :704490.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_3-Buten-1-ol_3-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-thiocyanic-acid-methyl-ester">
+<h2>Feature : Thiocyanic acid, methyl ester<a class="headerlink" href="#feature-thiocyanic-acid-methyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 5</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :51143.05555555553</p></li>
+<li><p><strong>Std</strong> :43158.757948246144</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 58038.22222222222</p></li>
+<li><p><strong>50%th Percentile</strong> : 58038.22222222222</p></li>
+<li><p><strong>75%th Percentile</strong> : 58038.22222222222</p></li>
+<li><p><strong>Max</strong> :254571.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Thiocyanic_acid_methyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-acetoin">
+<h2>Feature : Acetoin<a class="headerlink" href="#feature-acetoin" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 21</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :198289.52</p></li>
+<li><p><strong>Std</strong> :389238.7399545917</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 199281.75</p></li>
+<li><p><strong>Max</strong> :2056879.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Acetoin3.png" /></p>
+</div>
+<div class="section" id="feature-1-pentanol-2-methyl">
+<h2>Feature : 1-Pentanol, 2-methyl-<a class="headerlink" href="#feature-1-pentanol-2-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 9</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :42891.570370370384</p></li>
+<li><p><strong>Std</strong> :31287.825678090947</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 48789.62962962963</p></li>
+<li><p><strong>50%th Percentile</strong> : 48789.62962962963</p></li>
+<li><p><strong>75%th Percentile</strong> : 48789.62962962963</p></li>
+<li><p><strong>Max</strong> :163793.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Pentanol_2-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-butanoic-acid-3-methyl-2-methylbutyl-ester">
+<h2>Feature : Butanoic acid, 3-methyl-, 2-methylbutyl ester<a class="headerlink" href="#feature-butanoic-acid-3-methyl-2-methylbutyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 11</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :114360.02222222228</p></li>
+<li><p><strong>Std</strong> :90252.77323955247</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 103049.88888888888</p></li>
+<li><p><strong>50%th Percentile</strong> : 103049.88888888888</p></li>
+<li><p><strong>75%th Percentile</strong> : 103049.88888888888</p></li>
+<li><p><strong>Max</strong> :590669.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Butanoic_acid_3-methyl-_2-methylbutyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-2-heptanol-4-methyl">
+<h2>Feature : 2-Heptanol, 4-methyl-<a class="headerlink" href="#feature-2-heptanol-4-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 7</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :51937.66296296296</p></li>
+<li><p><strong>Std</strong> :55695.85419073912</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 45394.51851851852</p></li>
+<li><p><strong>50%th Percentile</strong> : 45394.51851851852</p></li>
+<li><p><strong>75%th Percentile</strong> : 45394.51851851852</p></li>
+<li><p><strong>Max</strong> :254736.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Heptanol_4-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-2-nonanone">
+<h2>Feature : 2-Nonanone<a class="headerlink" href="#feature-2-nonanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 35</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :610164.6733333336</p></li>
+<li><p><strong>Std</strong> :554677.6136026408</p></li>
+<li><p><strong>Min</strong> :75932.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 272400.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 618212.5833333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 618535.1666666666</p></li>
+<li><p><strong>Max</strong> :2654044.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Nonanone_3.png" /></p>
+</div>
+<div class="section" id="feature-acetic-acid">
+<h2>Feature : Acetic acid<a class="headerlink" href="#feature-acetic-acid" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 36</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :3770857.941052632</p></li>
+<li><p><strong>Std</strong> :4258229.798871652</p></li>
+<li><p><strong>Min</strong> :125680.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 1265311.75</p></li>
+<li><p><strong>50%th Percentile</strong> : 3192334.0350877196</p></li>
+<li><p><strong>75%th Percentile</strong> : 3241608.0701754387</p></li>
+<li><p><strong>Max</strong> :21176351.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Acetic_acid3.png" /></p>
+</div>
+<div class="section" id="feature-2-nonanol">
+<h2>Feature : 2-Nonanol<a class="headerlink" href="#feature-2-nonanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 16</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :639401.2918518521</p></li>
+<li><p><strong>Std</strong> :411757.9454457555</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 628854.074074074</p></li>
+<li><p><strong>50%th Percentile</strong> : 628854.074074074</p></li>
+<li><p><strong>75%th Percentile</strong> : 628854.074074074</p></li>
+<li><p><strong>Max</strong> :2526340.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Nonanol3.png" /></p>
+</div>
+<div class="section" id="feature-pyrrole">
+<h2>Feature : Pyrrole<a class="headerlink" href="#feature-pyrrole" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 16</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :377259.28074074053</p></li>
+<li><p><strong>Std</strong> :86695.83320620656</p></li>
+<li><p><strong>Min</strong> :103804.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 371058.6296296296</p></li>
+<li><p><strong>50%th Percentile</strong> : 371058.6296296296</p></li>
+<li><p><strong>75%th Percentile</strong> : 371058.6296296296</p></li>
+<li><p><strong>Max</strong> :720171.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Pyrrole3.png" /></p>
+</div>
+<div class="section" id="feature-1h-pyrrole-2-methyl">
+<h2>Feature : 1H-Pyrrole, 2-methyl-<a class="headerlink" href="#feature-1h-pyrrole-2-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 14</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :352149.0785185186</p></li>
+<li><p><strong>Std</strong> :119856.18498810727</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 333395.7407407408</p></li>
+<li><p><strong>50%th Percentile</strong> : 333395.7407407408</p></li>
+<li><p><strong>75%th Percentile</strong> : 333395.7407407408</p></li>
+<li><p><strong>Max</strong> :621874.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1H-Pyrrole_2-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-1-heptanol-2-4-dimethyl">
+<h2>Feature : 1-Heptanol, 2,4-dimethyl-,<a class="headerlink" href="#feature-1-heptanol-2-4-dimethyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 17</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :49322.05037037036</p></li>
+<li><p><strong>Std</strong> :57888.28404320323</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 49898.40740740741</p></li>
+<li><p><strong>75%th Percentile</strong> : 56768.0</p></li>
+<li><p><strong>Max</strong> :274686.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Heptanol_24-dimethyl-3.png" /></p>
+</div>
+<div class="section" id="feature-propanoic-acid">
+<h2>Feature : Propanoic acid<a class="headerlink" href="#feature-propanoic-acid" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 19</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :69033.50142857141</p></li>
+<li><p><strong>Std</strong> :86735.67783264867</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 57874.07142857143</p></li>
+<li><p><strong>75%th Percentile</strong> : 59898.75</p></li>
+<li><p><strong>Max</strong> :364754.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Propanoic_acid3.png" /></p>
+</div>
+<div class="section" id="feature-propanoic-acid-2-methyl">
+<h2>Feature : Propanoic acid, 2-methyl-<a class="headerlink" href="#feature-propanoic-acid-2-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 3</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :15162.98799999999</p></li>
+<li><p><strong>Std</strong> :12839.722628077887</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 20034.1</p></li>
+<li><p><strong>75%th Percentile</strong> : 20034.1</p></li>
+<li><p><strong>Max</strong> :76990.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Propanoic_acid_2-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-1-octanol">
+<h2>Feature : 1-Octanol<a class="headerlink" href="#feature-1-octanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 18</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :640645.9222222217</p></li>
+<li><p><strong>Std</strong> :341361.9441740945</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 664654.7777777778</p></li>
+<li><p><strong>50%th Percentile</strong> : 664654.7777777778</p></li>
+<li><p><strong>75%th Percentile</strong> : 664654.7777777778</p></li>
+<li><p><strong>Max</strong> :1900921.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Octanol3.png" /></p>
+</div>
+<div class="section" id="feature-2-undecanone">
+<h2>Feature : 2-Undecanone<a class="headerlink" href="#feature-2-undecanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 34</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :527311.7903703703</p></li>
+<li><p><strong>Std</strong> :362955.3732708817</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 285671.75</p></li>
+<li><p><strong>50%th Percentile</strong> : 590926.9074074074</p></li>
+<li><p><strong>75%th Percentile</strong> : 590926.9074074074</p></li>
+<li><p><strong>Max</strong> :1644906.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Undecanone3.png" /></p>
+</div>
+<div class="section" id="feature-benzoic-acid-methyl-ester">
+<h2>Feature : Benzoic acid, methyl ester<a class="headerlink" href="#feature-benzoic-acid-methyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 23</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :139759.22222222216</p></li>
+<li><p><strong>Std</strong> :127351.78661012037</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 20355.75</p></li>
+<li><p><strong>50%th Percentile</strong> : 134161.44444444444</p></li>
+<li><p><strong>75%th Percentile</strong> : 152331.36111111112</p></li>
+<li><p><strong>Max</strong> :556478.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Benzoic_acid_methyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-butyrolactone">
+<h2>Feature : Butyrolactone<a class="headerlink" href="#feature-butyrolactone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 3</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :32754.178666666667</p></li>
+<li><p><strong>Std</strong> :26340.528469711986</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 43750.23333333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 43750.23333333333</p></li>
+<li><p><strong>Max</strong> :150201.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Butyrolactone_3.png" /></p>
+</div>
+<div class="section" id="feature-decanoic-acid-ethyl-ester">
+<h2>Feature :  Decanoic acid, ethyl ester<a class="headerlink" href="#feature-decanoic-acid-ethyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 6</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :37734.055555555584</p></li>
+<li><p><strong>Std</strong> :54888.88841120313</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 37525.444444444445</p></li>
+<li><p><strong>75%th Percentile</strong> : 37525.444444444445</p></li>
+<li><p><strong>Max</strong> :344949.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_Decanoic_acid_ethyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-acetic-acid-decyl-ester">
+<h2>Feature : Acetic acid, decyl ester<a class="headerlink" href="#feature-acetic-acid-decyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 6</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :36367.26888888886</p></li>
+<li><p><strong>Std</strong> :45133.677543249505</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 37478.11111111111</p></li>
+<li><p><strong>75%th Percentile</strong> : 37478.11111111111</p></li>
+<li><p><strong>Max</strong> :261433.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Acetic_acid_decyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-2-undecanol">
+<h2>Feature : 2-Undecanol<a class="headerlink" href="#feature-2-undecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 21</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :338073.234074074</p></li>
+<li><p><strong>Std</strong> :570427.8888711976</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 244586.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 338121.48148148146</p></li>
+<li><p><strong>Max</strong> :3287479.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Undecanol3.png" /></p>
+</div>
+<div class="section" id="feature-butanoic-acid-3-methyl">
+<h2>Feature : Butanoic acid, 3-methyl-<a class="headerlink" href="#feature-butanoic-acid-3-methyl" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 17</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :2507541.2026666654</p></li>
+<li><p><strong>Std</strong> :790842.7422471911</p></li>
+<li><p><strong>Min</strong> :1607769.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 2403459.033333333</p></li>
+<li><p><strong>50%th Percentile</strong> : 2403459.033333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 2403459.033333333</p></li>
+<li><p><strong>Max</strong> :5887513.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Butanoic_acid_3-methyl-3.png" /></p>
+</div>
+<div class="section" id="feature-2-dodecanone">
+<h2>Feature : 2-Dodecanone<a class="headerlink" href="#feature-2-dodecanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 8</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :29310.93851851853</p></li>
+<li><p><strong>Std</strong> :25048.231624577184</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 7727.12037037037</p></li>
+<li><p><strong>50%th Percentile</strong> : 30908.48148148148</p></li>
+<li><p><strong>75%th Percentile</strong> : 30908.48148148148</p></li>
+<li><p><strong>Max</strong> :103754.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Dodecanone3.png" /></p>
+</div>
+<div class="section" id="feature-1-decanol">
+<h2>Feature : 1-Decanol<a class="headerlink" href="#feature-1-decanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 19</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :1539228.463703704</p></li>
+<li><p><strong>Std</strong> :1293453.2597995528</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 1224696.5740740742</p></li>
+<li><p><strong>50%th Percentile</strong> : 1524509.2962962964</p></li>
+<li><p><strong>75%th Percentile</strong> : 1524509.2962962964</p></li>
+<li><p><strong>Max</strong> :7740141.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Decanol3.png" /></p>
+</div>
+<div class="section" id="feature-2-tridecanone">
+<h2>Feature : 2-Tridecanone<a class="headerlink" href="#feature-2-tridecanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 20</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :311688.25703703694</p></li>
+<li><p><strong>Std</strong> :142909.21151373317</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 314530.962962963</p></li>
+<li><p><strong>50%th Percentile</strong> : 314530.962962963</p></li>
+<li><p><strong>75%th Percentile</strong> : 314530.962962963</p></li>
+<li><p><strong>Max</strong> :975303.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Tridecanone3.png" /></p>
+</div>
+<div class="section" id="feature-dodecanoic-acid-ethyl-ester">
+<h2>Feature :  Dodecanoic acid, ethyl ester<a class="headerlink" href="#feature-dodecanoic-acid-ethyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 5</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :19989.58814814813</p></li>
+<li><p><strong>Std</strong> :27663.214710577144</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 21410.85185185185</p></li>
+<li><p><strong>75%th Percentile</strong> : 21410.85185185185</p></li>
+<li><p><strong>Max</strong> :171353.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_Dodecanoic_acid_ethyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-1-4-butanediol">
+<h2>Feature : 1,4-Butanediol<a class="headerlink" href="#feature-1-4-butanediol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 3</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :16017.470666666653</p></li>
+<li><p><strong>Std</strong> :12871.635471828</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 21398.13333333333</p></li>
+<li><p><strong>75%th Percentile</strong> : 21398.13333333333</p></li>
+<li><p><strong>Max</strong> :73337.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/14-Butanediol3.png" /></p>
+</div>
+<div class="section" id="feature-phenylethyl-alcohol">
+<h2>Feature : Phenylethyl Alcohol<a class="headerlink" href="#feature-phenylethyl-alcohol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 18</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :141738.7503703704</p></li>
+<li><p><strong>Std</strong> :46634.31220179956</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 147761.62962962964</p></li>
+<li><p><strong>50%th Percentile</strong> : 147761.62962962964</p></li>
+<li><p><strong>75%th Percentile</strong> : 147761.62962962964</p></li>
+<li><p><strong>Max</strong> :257087.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Phenylethyl_Alcohol3.png" /></p>
+</div>
+<div class="section" id="feature-acetophenone-2-amino">
+<h2>Feature : Acetophenone, 2’-amino-<a class="headerlink" href="#feature-acetophenone-2-amino" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 13</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :334516.0740740739</p></li>
+<li><p><strong>Std</strong> :259734.60925866014</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 343307.962962963</p></li>
+<li><p><strong>50%th Percentile</strong> : 343307.962962963</p></li>
+<li><p><strong>75%th Percentile</strong> : 343307.962962963</p></li>
+<li><p><strong>Max</strong> :1937240.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Acetophenone_2-amino-3.png" /></p>
+</div>
+<div class="section" id="feature-2-tridecanol">
+<h2>Feature : 2-Tridecanol<a class="headerlink" href="#feature-2-tridecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 12</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :58810.76592592596</p></li>
+<li><p><strong>Std</strong> :45322.27054590935</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 56845.07407407407</p></li>
+<li><p><strong>50%th Percentile</strong> : 56845.07407407407</p></li>
+<li><p><strong>75%th Percentile</strong> : 56845.07407407407</p></li>
+<li><p><strong>Max</strong> :231601.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/2-Tridecanol3.png" /></p>
+</div>
+<div class="section" id="feature-tetradecanal">
+<h2>Feature : Tetradecanal<a class="headerlink" href="#feature-tetradecanal" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 2</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :5156.54</p></li>
+<li><p><strong>Std</strong> :4077.944461242648</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 8317.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 8317.0</p></li>
+<li><p><strong>Max</strong> :8317.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Tetradecanal3.png" /></p>
+</div>
+<div class="section" id="feature-1-dodecanol">
+<h2>Feature : 1-Dodecanol<a class="headerlink" href="#feature-1-dodecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 20</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :2125704.175555557</p></li>
+<li><p><strong>Std</strong> :1389440.769323185</p></li>
+<li><p><strong>Min</strong> :242246.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 1837700.25</p></li>
+<li><p><strong>50%th Percentile</strong> : 2098782.4444444445</p></li>
+<li><p><strong>75%th Percentile</strong> : 2098782.4444444445</p></li>
+<li><p><strong>Max</strong> :8172616.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Dodecanol3.png" /></p>
+</div>
+<div class="section" id="feature-methyl-tetradecanoate">
+<h2>Feature : Methyl tetradecanoate<a class="headerlink" href="#feature-methyl-tetradecanoate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 8</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :98979.62666666668</p></li>
+<li><p><strong>Std</strong> :123349.42796958846</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 13159.25</p></li>
+<li><p><strong>50%th Percentile</strong> : 97878.33333333331</p></li>
+<li><p><strong>75%th Percentile</strong> : 97878.33333333331</p></li>
+<li><p><strong>Max</strong> :698476.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Methyl_tetradecanoate3.png" /></p>
+</div>
+<div class="section" id="feature-2-pentadecanone">
+<h2>Feature :  2-Pentadecanone<a class="headerlink" href="#feature-2-pentadecanone" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 14</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :85214.10962962963</p></li>
+<li><p><strong>Std</strong> :61065.49367765471</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 83540.59259259258</p></li>
+<li><p><strong>50%th Percentile</strong> : 85753.37037037036</p></li>
+<li><p><strong>75%th Percentile</strong> : 85753.37037037036</p></li>
+<li><p><strong>Max</strong> :382222.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_2-Pentadecanone3.png" /></p>
+</div>
+<div class="section" id="feature-tetradecanoic-acid-ethyl-ester">
+<h2>Feature : Tetradecanoic acid, ethyl ester<a class="headerlink" href="#feature-tetradecanoic-acid-ethyl-ester" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 3</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :7630.7992592592545</p></li>
+<li><p><strong>Std</strong> :9787.968706052938</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 0.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 10167.74074074074</p></li>
+<li><p><strong>75%th Percentile</strong> : 10167.74074074074</p></li>
+<li><p><strong>Max</strong> :66340.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Tetradecanoic_acid_ethyl_ester3.png" /></p>
+</div>
+<div class="section" id="feature-hexadecanal">
+<h2>Feature : Hexadecanal<a class="headerlink" href="#feature-hexadecanal" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 11</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :81005.9096296296</p></li>
+<li><p><strong>Std</strong> :61676.654751540606</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 69126.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 94159.37037037036</p></li>
+<li><p><strong>75%th Percentile</strong> : 94159.37037037036</p></li>
+<li><p><strong>Max</strong> :400513.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Hexadecanal3.png" /></p>
+</div>
+<div class="section" id="feature-n-tridecan-1-ol">
+<h2>Feature : n-Tridecan-1-ol<a class="headerlink" href="#feature-n-tridecan-1-ol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 9</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :80178.47037037039</p></li>
+<li><p><strong>Std</strong> :62979.97736571915</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 85581.62962962964</p></li>
+<li><p><strong>50%th Percentile</strong> : 85581.62962962964</p></li>
+<li><p><strong>75%th Percentile</strong> : 85581.62962962964</p></li>
+<li><p><strong>Max</strong> :314284.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/n-Tridecan-1-ol3.png" /></p>
+</div>
+<div class="section" id="feature-1-tetradecanol">
+<h2>Feature : 1-Tetradecanol<a class="headerlink" href="#feature-1-tetradecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 20</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :529247.7437037034</p></li>
+<li><p><strong>Std</strong> :215185.47029302336</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 586042.2962962963</p></li>
+<li><p><strong>50%th Percentile</strong> : 586042.2962962963</p></li>
+<li><p><strong>75%th Percentile</strong> : 586042.2962962963</p></li>
+<li><p><strong>Max</strong> :1084828.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/1-Tetradecanol3.png" /></p>
+</div>
+<div class="section" id="feature-n-pentadecanol">
+<h2>Feature : n-Pentadecanol<a class="headerlink" href="#feature-n-pentadecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 7</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :170159.59384615376</p></li>
+<li><p><strong>Std</strong> :262916.60722340376</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 19868.75</p></li>
+<li><p><strong>50%th Percentile</strong> : 173037.61538461538</p></li>
+<li><p><strong>75%th Percentile</strong> : 173037.61538461538</p></li>
+<li><p><strong>Max</strong> :1869692.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/n-Pentadecanol3.png" /></p>
+</div>
+<div class="section" id="feature-1-hexadecanol">
+<h2>Feature :  1-Hexadecanol<a class="headerlink" href="#feature-1-hexadecanol" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 17</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :567417.0259259262</p></li>
+<li><p><strong>Std</strong> :341602.86381717335</p></li>
+<li><p><strong>Min</strong> :0.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 413098.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 662122.074074074</p></li>
+<li><p><strong>75%th Percentile</strong> : 662122.074074074</p></li>
+<li><p><strong>Max</strong> :1940003.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/_1-Hexadecanol3.png" /></p>
+</div>
+<div class="section" id="feature-indole">
+<h2>Feature : Indole<a class="headerlink" href="#feature-indole" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Feature type</strong> : continous</p></li>
+<li><p><strong>Missing</strong> : 0.0%</p></li>
+<li><p><strong>Unique</strong> : 20</p></li>
+<li><p><strong>Count</strong> :50.0</p></li>
+<li><p><strong>Mean</strong> :83225771.18</p></li>
+<li><p><strong>Std</strong> :11244659.250069898</p></li>
+<li><p><strong>Min</strong> :43562718.0</p></li>
+<li><p><strong>25%th Percentile</strong> : 82469063.0</p></li>
+<li><p><strong>50%th Percentile</strong> : 82469063.0</p></li>
+<li><p><strong>75%th Percentile</strong> : 82469063.0</p></li>
+<li><p><strong>Max</strong> :111534573.0</p></li>
+</ul>
+<p><img alt="" src="../../../_images/Indole3.png" /></p>
+<p><a class="reference internal" href="../README.html"><span class="doc std std-doc">&lt;&lt; Go back</span></a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./automl\AutoML_13\EDA"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
