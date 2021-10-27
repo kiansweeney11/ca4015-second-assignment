@@ -11,4 +11,6 @@ Git repo for second assignment of CA4015: Advanced Machine Learning.
 - automl.ipynb - our automl approach with our imputed data with use of cross-validation.
 - medium.ipynb - AutoML and RF approaches to predicting the medium of bacteria is contained in this file.
 
-NOTE: Other files are not relevant to our experiments.
+NOTE: I also added the output files for automl for the medium script. I decided
+not to add all of these Automl folders as there would be too many and they could not
+be moved to a seperate location.
