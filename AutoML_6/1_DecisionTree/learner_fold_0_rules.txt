@@ -1,0 +1,10 @@
+if (n-Tridecan-1-ol <= 96511.816) and (Methyl Isobutyl Ketone > 83582.5) and (Propanoic acid <= 89991.035) then class: 2 (proba: 92.86%) | based on 14 samples
+
+if (n-Tridecan-1-ol <= 96511.816) and (Methyl Isobutyl Ketone <= 83582.5) and (Decane <= 235027.5) then class: 1 (proba: 92.86%) | based on 14 samples
+
+if (n-Tridecan-1-ol > 96511.816) then class: 0 (proba: 100.0%) | based on 11 samples
+
+if (n-Tridecan-1-ol <= 96511.816) and (Methyl Isobutyl Ketone <= 83582.5) and (Decane > 235027.5) then class: 0 (proba: 75.0%) | based on 4 samples
+
+if (n-Tridecan-1-ol <= 96511.816) and (Methyl Isobutyl Ketone > 83582.5) and (Propanoic acid > 89991.035) then class: 1 (proba: 100.0%) | based on 2 samples
+

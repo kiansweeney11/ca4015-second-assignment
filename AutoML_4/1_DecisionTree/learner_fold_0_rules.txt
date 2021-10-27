@@ -1,0 +1,10 @@
+if (Ethanol > 85656.0) and ( 3-Buten-1-ol, 3-methyl- <= 156619.0) and (1-Decanol > 620778.0) then class: 2 (proba: 80.0%) | based on 20 samples
+
+if (Ethanol <= 85656.0) and (Dodecane <= 47490.167) then class: 0 (proba: 100.0%) | based on 11 samples
+
+if (Ethanol > 85656.0) and ( 3-Buten-1-ol, 3-methyl- > 156619.0) then class: 1 (proba: 100.0%) | based on 10 samples
+
+if (Ethanol > 85656.0) and ( 3-Buten-1-ol, 3-methyl- <= 156619.0) and (1-Decanol <= 620778.0) then class: 0 (proba: 100.0%) | based on 4 samples
+
+if (Ethanol <= 85656.0) and (Dodecane > 47490.167) then class: 1 (proba: 100.0%) | based on 1 samples
+

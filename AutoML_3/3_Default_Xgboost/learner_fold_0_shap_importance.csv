@@ -1,0 +1,68 @@
+feature,shap_importance
+ Ethyl Acetate,1.5471365451812744
+" 3-Buten-1-ol, 3-methyl-",1.424356460571289
+Ethanol,1.1609060764312744
+1-Butanol,1.0963208675384521
+2-Pentanone,0.594325065612793
+Methyl thiolacetate,0.5162580609321594
+Methyl Isobutyl Ketone,0.4622040390968323
+2-Undecanol,0.37583333253860474
+Acetic acid,0.3673948645591736
+Decane,0.34806394577026367
+Butyrolactone ,0.2992846667766571
+Methyl isovalerate,0.23093613982200623
+"1-Butanol, 3-methyl-",0.22262930870056152
+"2-Pentanol, 2-methyl-",0.2131827175617218
+1-Propanol,0.18371401727199554
+2-Pentanol,0.17654438316822052
+"2-Heptanol, 4-methyl-",0.15962986648082733
+"1H-Pyrrole, 2-methyl-",0.12973052263259888
+Acetoin,0.12586714327335358
+1 - Undecene,0.060652296990156174
+"Butanoic acid, 2-methyl-, methyl ester",0.06014912202954292
+ S-Methyl 3-methylbutanethioate,0.05423327162861824
+"Acetophenone, 2'-amino-",0.04914340749382973
+2-Nonanone ,0.035145848989486694
+"Benzoic acid, methyl ester",0.028950486332178116
+"2-Heptanone, 4,6-dimethyl-",0.023480283096432686
+2-Heptanone,0.02183590456843376
+"Butanoic acid, 3-methyl-",0.021774224936962128
+Amylene hydrate,0.015668392181396484
+2-Undecanone,0.015532667748630047
+"1-Propanol, 2-methyl-",0.014461560174822807
+Dodecane,0.01150271762162447
+Pyrrole,0.010291971266269684
+2-Nonanol,0.006447273306548595
+"Butanoic acid, 3-methyl-, 2-methylbutyl ester",0.005819257814437151
+"Propanoic acid, ethyl ester",0.005804681684821844
+"1-Heptanol, 2,4-dimethyl-,",0.004979830700904131
+n-Pentadecanol,0.0048068612813949585
+" Dodecanoic acid, ethyl ester",0.0
+ 2-Pentadecanone,0.0
+"Tetradecanoic acid, ethyl ester",0.0
+Methyl tetradecanoate,0.0
+1-Dodecanol,0.0
+Hexadecanal,0.0
+n-Tridecan-1-ol,0.0
+1-Tetradecanol,0.0
+Tetradecanal,0.0
+2-Tridecanol,0.0
+ 1-Hexadecanol,0.0
+Phenylethyl Alcohol,0.0
+"1,4-Butanediol",0.0
+Propanoic acid,0.0
+2-Tridecanone,0.0
+1-Decanol,0.0
+2-Dodecanone,0.0
+"Acetic acid, decyl ester",0.0
+" Decanoic acid, ethyl ester",0.0
+1-Octanol,0.0
+"Propanoic acid, 2-methyl-",0.0
+"1-Pentanol, 2-methyl-",0.0
+"Thiocyanic acid, methyl ester",0.0
+"1-Butanol, 3-methyl-, acetate",0.0
+Ethyl isocyanide,0.0
+2-Hexanone,0.0
+"Butanoic acid, 2-methyl-, ethyl ester",0.0
+Isobutyl acetate,0.0
+Indole,0.0

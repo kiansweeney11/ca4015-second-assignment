@@ -1,0 +1,68 @@
+feature,shap_importance
+Ethanol,1.863743543624878
+2-Pentanol,1.107225775718689
+" 3-Buten-1-ol, 3-methyl-",0.9999169111251831
+2-Undecanol,0.8228701949119568
+Methyl thiolacetate,0.6754227876663208
+Methyl isovalerate,0.5242846012115479
+ Ethyl Acetate,0.4909416437149048
+Pyrrole,0.4651244878768921
+1-Propanol,0.4101646840572357
+"Butanoic acid, 3-methyl-",0.3353613018989563
+"2-Pentanol, 2-methyl-",0.2575071454048157
+Acetoin,0.12815900146961212
+Acetic acid,0.12374758720397949
+Decane,0.11852002143859863
+1-Butanol,0.09082002192735672
+"Butanoic acid, 2-methyl-, methyl ester",0.0753176361322403
+"Butanoic acid, 3-methyl-, 2-methylbutyl ester",0.0503711998462677
+"1-Butanol, 3-methyl-",0.04323788732290268
+"Benzoic acid, methyl ester",0.04240306466817856
+Propanoic acid,0.037684835493564606
+"Butanoic acid, 2-methyl-, ethyl ester",0.03730690851807594
+2-Heptanone,0.03685212507843971
+Methyl Isobutyl Ketone,0.035402216017246246
+1-Octanol,0.025844892486929893
+2-Nonanone ,0.025757942348718643
+1-Decanol,0.021931618452072144
+"Thiocyanic acid, methyl ester",0.019438203424215317
+2-Pentanone,0.01859244331717491
+"1-Propanol, 2-methyl-",0.017382534220814705
+ S-Methyl 3-methylbutanethioate,0.0149095319211483
+" Decanoic acid, ethyl ester",0.012937430292367935
+Phenylethyl Alcohol,0.011702670715749264
+2-Undecanone,0.011551628820598125
+2-Tridecanone,0.010518732480704784
+Dodecane,0.009724379517138004
+2-Tridecanol,0.009550713934004307
+"1-Heptanol, 2,4-dimethyl-,",0.0092866076156497
+1 - Undecene,0.005093269981443882
+Ethyl isocyanide,0.0039912001229822636
+"Acetophenone, 2'-amino-",0.0
+Tetradecanal,0.0
+1-Tetradecanol,0.0
+1-Dodecanol,0.0
+Methyl tetradecanoate,0.0
+n-Pentadecanol,0.0
+ 2-Pentadecanone,0.0
+"1,4-Butanediol",0.0
+"Tetradecanoic acid, ethyl ester",0.0
+Hexadecanal,0.0
+n-Tridecan-1-ol,0.0
+ 1-Hexadecanol,0.0
+2-Hexanone,0.0
+" Dodecanoic acid, ethyl ester",0.0
+2-Dodecanone,0.0
+"Propanoic acid, ethyl ester",0.0
+"Acetic acid, decyl ester",0.0
+Butyrolactone ,0.0
+"Propanoic acid, 2-methyl-",0.0
+"1H-Pyrrole, 2-methyl-",0.0
+2-Nonanol,0.0
+"2-Heptanol, 4-methyl-",0.0
+"1-Pentanol, 2-methyl-",0.0
+Amylene hydrate,0.0
+"2-Heptanone, 4,6-dimethyl-",0.0
+"1-Butanol, 3-methyl-, acetate",0.0
+Isobutyl acetate,0.0
+Indole,0.0

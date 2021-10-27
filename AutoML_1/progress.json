@@ -1,0 +1,713 @@
+{
+    "fit_level": "finished",
+    "time_controller": {
+        "total_time_limit": 300,
+        "model_time_limit": null,
+        "steps": [
+            "simple_algorithms",
+            "default_algorithms",
+            "ensemble"
+        ],
+        "algorithms": [
+            "Decision Tree",
+            "Linear",
+            "Random Forest",
+            "Nearest Neighbors",
+            "Xgboost"
+        ],
+        "spend": [
+            {
+                "model_name": "prepare_data",
+                "model_type": "prepare_data",
+                "fit_level": "prepare_data",
+                "train_time": 24.21405291557312
+            },
+            {
+                "model_name": "1_DecisionTree",
+                "model_type": "Decision Tree",
+                "fit_level": "simple_algorithms",
+                "train_time": 28.665318489074707
+            },
+            {
+                "model_name": "2_Linear",
+                "model_type": "Linear",
+                "fit_level": "simple_algorithms",
+                "train_time": 12.467746019363403
+            },
+            {
+                "model_name": "3_Default_Xgboost",
+                "model_type": "Xgboost",
+                "fit_level": "default_algorithms",
+                "train_time": 14.94688606262207
+            },
+            {
+                "model_name": "4_Default_RandomForest",
+                "model_type": "Random Forest",
+                "fit_level": "default_algorithms",
+                "train_time": 13.905128717422485
+            },
+            {
+                "model_name": "5_Default_NearestNeighbors",
+                "model_type": "Nearest Neighbors",
+                "fit_level": "default_algorithms",
+                "train_time": 3.6950151920318604
+            },
+            {
+                "model_name": "Ensemble",
+                "model_type": "Ensemble",
+                "fit_level": "ensemble",
+                "train_time": 0.673997163772583
+            }
+        ],
+        "is_hill_climbing": false,
+        "is_stacking": false
+    },
+    "all_params": {
+        "simple_algorithms": [
+            {
+                "additional": {
+                    "trees_in_step": 1,
+                    "train_cant_improve_limit": 0,
+                    "max_steps": 1,
+                    "max_rows_limit": null,
+                    "max_cols_limit": null
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {},
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "multiclass_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "AutoML_1\\X.data",
+                    "y_path": "AutoML_1\\y.data",
+                    "results_path": "AutoML_1"
+                },
+                "learner": {
+                    "model_type": "Decision Tree",
+                    "ml_task": "multiclass_classification",
+                    "n_jobs": -1,
+                    "seed": 1235,
+                    "criterion": "gini",
+                    "max_depth": 3,
+                    "num_class": 3,
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "multiclass_classification",
+                "explain_level": 2,
+                "name": "1_DecisionTree",
+                "status": "trained",
+                "final_loss": 0.842860829399608,
+                "train_time": 30.69631576538086,
+                "data_type": "original",
+                "max_time_for_learner": 60
+            },
+            {
+                "additional": {
+                    "max_steps": 1,
+                    "max_rows_limit": null,
+                    "max_cols_limit": null
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {
+                        " Ethyl Acetate": [
+                            "scale_normal"
+                        ],
+                        "Ethanol": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanone": [
+                            "scale_normal"
+                        ],
+                        "Decane": [
+                            "scale_normal"
+                        ],
+                        "Methyl Isobutyl Ketone": [
+                            "scale_normal"
+                        ],
+                        "Amylene hydrate": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 2-methyl-, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Isobutyl acetate": [
+                            "scale_normal"
+                        ],
+                        "Methyl isovalerate": [
+                            "scale_normal"
+                        ],
+                        "1-Propanol": [
+                            "scale_normal"
+                        ],
+                        "Methyl thiolacetate": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 2-methyl-, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Hexanone": [
+                            "scale_normal"
+                        ],
+                        "Ethyl isocyanide": [
+                            "scale_normal"
+                        ],
+                        "1-Propanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanol": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol, 3-methyl-, acetate": [
+                            "scale_normal"
+                        ],
+                        "1 - Undecene": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanone": [
+                            "scale_normal"
+                        ],
+                        "Dodecane": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        " S-Methyl 3-methylbutanethioate": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanone, 4,6-dimethyl-": [
+                            "scale_normal"
+                        ],
+                        " 3-Buten-1-ol, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        "Thiocyanic acid, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Acetoin": [
+                            "scale_normal"
+                        ],
+                        "1-Pentanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 3-methyl-, 2-methylbutyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanol, 4-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Nonanone ": [
+                            "scale_normal"
+                        ],
+                        "Acetic acid": [
+                            "scale_normal"
+                        ],
+                        "2-Nonanol": [
+                            "scale_normal"
+                        ],
+                        "Pyrrole": [
+                            "scale_normal"
+                        ],
+                        "1H-Pyrrole, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "1-Heptanol, 2,4-dimethyl-,": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "1-Octanol": [
+                            "scale_normal"
+                        ],
+                        "2-Undecanone": [
+                            "scale_normal"
+                        ],
+                        "Benzoic acid, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Butyrolactone ": [
+                            "scale_normal"
+                        ],
+                        " Decanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "Acetic acid, decyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Undecanol": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Dodecanone": [
+                            "scale_normal"
+                        ],
+                        "1-Decanol": [
+                            "scale_normal"
+                        ],
+                        "2-Tridecanone": [
+                            "scale_normal"
+                        ],
+                        " Dodecanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "1,4-Butanediol": [
+                            "scale_normal"
+                        ],
+                        "Phenylethyl Alcohol": [
+                            "scale_normal"
+                        ],
+                        "Acetophenone, 2'-amino-": [
+                            "scale_normal"
+                        ],
+                        "2-Tridecanol": [
+                            "scale_normal"
+                        ],
+                        "Tetradecanal": [
+                            "scale_normal"
+                        ],
+                        "1-Dodecanol": [
+                            "scale_normal"
+                        ],
+                        "Methyl tetradecanoate": [
+                            "scale_normal"
+                        ],
+                        " 2-Pentadecanone": [
+                            "scale_normal"
+                        ],
+                        "Tetradecanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "Hexadecanal": [
+                            "scale_normal"
+                        ],
+                        "n-Tridecan-1-ol": [
+                            "scale_normal"
+                        ],
+                        "1-Tetradecanol": [
+                            "scale_normal"
+                        ],
+                        "n-Pentadecanol": [
+                            "scale_normal"
+                        ],
+                        " 1-Hexadecanol": [
+                            "scale_normal"
+                        ],
+                        "Indole": [
+                            "scale_normal"
+                        ]
+                    },
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "multiclass_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "AutoML_1\\X.data",
+                    "y_path": "AutoML_1\\y.data",
+                    "results_path": "AutoML_1"
+                },
+                "learner": {
+                    "model_type": "Linear",
+                    "ml_task": "multiclass_classification",
+                    "n_jobs": -1,
+                    "seed": 1235,
+                    "num_class": 3,
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "multiclass_classification",
+                "explain_level": 2,
+                "name": "2_Linear",
+                "status": "trained",
+                "final_loss": 0.22337898278978466,
+                "train_time": 14.258004665374756,
+                "data_type": "original",
+                "max_time_for_learner": 60
+            }
+        ],
+        "default_algorithms": [
+            {
+                "additional": {
+                    "max_rounds": 10000,
+                    "early_stopping_rounds": 50,
+                    "max_rows_limit": null,
+                    "max_cols_limit": null
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {},
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "multiclass_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "AutoML_1\\X.data",
+                    "y_path": "AutoML_1\\y.data",
+                    "results_path": "AutoML_1"
+                },
+                "learner": {
+                    "model_type": "Xgboost",
+                    "ml_task": "multiclass_classification",
+                    "n_jobs": -1,
+                    "objective": "multi:softprob",
+                    "eta": 0.075,
+                    "max_depth": 6,
+                    "min_child_weight": 1,
+                    "subsample": 1.0,
+                    "colsample_bytree": 1.0,
+                    "seed": 3,
+                    "eval_metric": "mlogloss",
+                    "num_class": 3,
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "multiclass_classification",
+                "explain_level": 2,
+                "name": "3_Default_Xgboost",
+                "status": "trained",
+                "final_loss": 0.10353068707303868,
+                "train_time": 16.88007640838623,
+                "data_type": "original",
+                "max_time_for_learner": 60
+            },
+            {
+                "additional": {
+                    "trees_in_step": 100,
+                    "train_cant_improve_limit": 1,
+                    "min_steps": 1,
+                    "max_steps": 50,
+                    "early_stopping_rounds": 50,
+                    "max_rows_limit": null,
+                    "max_cols_limit": null
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {},
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "multiclass_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "AutoML_1\\X.data",
+                    "y_path": "AutoML_1\\y.data",
+                    "results_path": "AutoML_1"
+                },
+                "learner": {
+                    "model_type": "Random Forest",
+                    "ml_task": "multiclass_classification",
+                    "n_jobs": -1,
+                    "criterion": "gini",
+                    "max_features": 0.9,
+                    "min_samples_split": 30,
+                    "max_depth": 4,
+                    "seed": 4,
+                    "eval_metric_name": "logloss",
+                    "num_class": 3,
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "multiclass_classification",
+                "explain_level": 2,
+                "name": "4_Default_RandomForest",
+                "status": "trained",
+                "final_loss": 0.596239091487942,
+                "train_time": 15.65995454788208,
+                "data_type": "original",
+                "max_time_for_learner": 60
+            },
+            {
+                "additional": {
+                    "max_rows_limit": 100000,
+                    "max_cols_limit": 100
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {
+                        " Ethyl Acetate": [
+                            "scale_normal"
+                        ],
+                        "Ethanol": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanone": [
+                            "scale_normal"
+                        ],
+                        "Decane": [
+                            "scale_normal"
+                        ],
+                        "Methyl Isobutyl Ketone": [
+                            "scale_normal"
+                        ],
+                        "Amylene hydrate": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 2-methyl-, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Isobutyl acetate": [
+                            "scale_normal"
+                        ],
+                        "Methyl isovalerate": [
+                            "scale_normal"
+                        ],
+                        "1-Propanol": [
+                            "scale_normal"
+                        ],
+                        "Methyl thiolacetate": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 2-methyl-, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Hexanone": [
+                            "scale_normal"
+                        ],
+                        "Ethyl isocyanide": [
+                            "scale_normal"
+                        ],
+                        "1-Propanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Pentanol": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol, 3-methyl-, acetate": [
+                            "scale_normal"
+                        ],
+                        "1 - Undecene": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanone": [
+                            "scale_normal"
+                        ],
+                        "Dodecane": [
+                            "scale_normal"
+                        ],
+                        "1-Butanol, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        " S-Methyl 3-methylbutanethioate": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanone, 4,6-dimethyl-": [
+                            "scale_normal"
+                        ],
+                        " 3-Buten-1-ol, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        "Thiocyanic acid, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Acetoin": [
+                            "scale_normal"
+                        ],
+                        "1-Pentanol, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 3-methyl-, 2-methylbutyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Heptanol, 4-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Nonanone ": [
+                            "scale_normal"
+                        ],
+                        "Acetic acid": [
+                            "scale_normal"
+                        ],
+                        "2-Nonanol": [
+                            "scale_normal"
+                        ],
+                        "Pyrrole": [
+                            "scale_normal"
+                        ],
+                        "1H-Pyrrole, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "1-Heptanol, 2,4-dimethyl-,": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid": [
+                            "scale_normal"
+                        ],
+                        "Propanoic acid, 2-methyl-": [
+                            "scale_normal"
+                        ],
+                        "1-Octanol": [
+                            "scale_normal"
+                        ],
+                        "2-Undecanone": [
+                            "scale_normal"
+                        ],
+                        "Benzoic acid, methyl ester": [
+                            "scale_normal"
+                        ],
+                        "Butyrolactone ": [
+                            "scale_normal"
+                        ],
+                        " Decanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "Acetic acid, decyl ester": [
+                            "scale_normal"
+                        ],
+                        "2-Undecanol": [
+                            "scale_normal"
+                        ],
+                        "Butanoic acid, 3-methyl-": [
+                            "scale_normal"
+                        ],
+                        "2-Dodecanone": [
+                            "scale_normal"
+                        ],
+                        "1-Decanol": [
+                            "scale_normal"
+                        ],
+                        "2-Tridecanone": [
+                            "scale_normal"
+                        ],
+                        " Dodecanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "1,4-Butanediol": [
+                            "scale_normal"
+                        ],
+                        "Phenylethyl Alcohol": [
+                            "scale_normal"
+                        ],
+                        "Acetophenone, 2'-amino-": [
+                            "scale_normal"
+                        ],
+                        "2-Tridecanol": [
+                            "scale_normal"
+                        ],
+                        "Tetradecanal": [
+                            "scale_normal"
+                        ],
+                        "1-Dodecanol": [
+                            "scale_normal"
+                        ],
+                        "Methyl tetradecanoate": [
+                            "scale_normal"
+                        ],
+                        " 2-Pentadecanone": [
+                            "scale_normal"
+                        ],
+                        "Tetradecanoic acid, ethyl ester": [
+                            "scale_normal"
+                        ],
+                        "Hexadecanal": [
+                            "scale_normal"
+                        ],
+                        "n-Tridecan-1-ol": [
+                            "scale_normal"
+                        ],
+                        "1-Tetradecanol": [
+                            "scale_normal"
+                        ],
+                        "n-Pentadecanol": [
+                            "scale_normal"
+                        ],
+                        " 1-Hexadecanol": [
+                            "scale_normal"
+                        ],
+                        "Indole": [
+                            "scale_normal"
+                        ]
+                    },
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "multiclass_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "AutoML_1\\X.data",
+                    "y_path": "AutoML_1\\y.data",
+                    "results_path": "AutoML_1"
+                },
+                "learner": {
+                    "model_type": "Nearest Neighbors",
+                    "ml_task": "multiclass_classification",
+                    "n_jobs": -1,
+                    "n_neighbors": 5,
+                    "weights": "uniform",
+                    "seed": 5,
+                    "num_class": 3,
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "multiclass_classification",
+                "explain_level": 2,
+                "name": "5_Default_NearestNeighbors",
+                "status": "trained",
+                "final_loss": 0.5273017992060605,
+                "train_time": 4.751919269561768,
+                "data_type": "original",
+                "max_time_for_learner": 60
+            }
+        ],
+        "ensemble": [
+            {
+                "model_type": "ensemble",
+                "is_stacked": false,
+                "name": "Ensemble",
+                "status": "trained",
+                "final_loss": 0.10353068365818924,
+                "train_time": 0.673997163772583
+            }
+        ]
+    },
+    "adjust_validation": false
+}

@@ -1,0 +1,68 @@
+feature,shap_importance
+Decane,1.2597806453704834
+ Ethyl Acetate,1.1843907833099365
+1-Dodecanol,1.092103123664856
+Ethanol,1.0887175798416138
+"1-Butanol, 3-methyl-",0.7934252023696899
+Methyl thiolacetate,0.5989169478416443
+2-Undecanol,0.5813742280006409
+Methyl Isobutyl Ketone,0.5785107612609863
+1-Butanol,0.47099044919013977
+"2-Pentanol, 2-methyl-",0.3039436936378479
+Ethyl isocyanide,0.18937717378139496
+Acetic acid,0.17546601593494415
+Methyl isovalerate,0.13647787272930145
+" 3-Buten-1-ol, 3-methyl-",0.09499376267194748
+2-Nonanone ,0.07204297930002213
+"1-Propanol, 2-methyl-",0.06770551949739456
+Amylene hydrate,0.057310327887535095
+"Butanoic acid, 3-methyl-",0.04864577576518059
+Propanoic acid,0.04769018292427063
+"Benzoic acid, methyl ester",0.04336097091436386
+"Butanoic acid, 2-methyl-, methyl ester",0.032107312232255936
+2-Hexanone,0.02613057941198349
+2-Pentanone,0.023961173370480537
+Acetoin,0.02334340289235115
+"1H-Pyrrole, 2-methyl-",0.020231878384947777
+2-Heptanone,0.012407854199409485
+"1-Pentanol, 2-methyl-",0.008405322209000587
+2-Pentanol,0.005081044510006905
+Hexadecanal,0.0043879407458007336
+Methyl tetradecanoate,0.0
+n-Pentadecanol,0.0
+2-Dodecanone,0.0
+1-Decanol,0.0
+2-Tridecanone,0.0
+ 1-Hexadecanol,0.0
+" Dodecanoic acid, ethyl ester",0.0
+"1,4-Butanediol",0.0
+Phenylethyl Alcohol,0.0
+ 2-Pentadecanone,0.0
+1-Tetradecanol,0.0
+"Acetophenone, 2'-amino-",0.0
+2-Tridecanol,0.0
+n-Tridecan-1-ol,0.0
+Tetradecanal,0.0
+"Propanoic acid, ethyl ester",0.0
+"Tetradecanoic acid, ethyl ester",0.0
+"Butanoic acid, 2-methyl-, ethyl ester",0.0
+"Propanoic acid, 2-methyl-",0.0
+"Acetic acid, decyl ester",0.0
+"Thiocyanic acid, methyl ester",0.0
+1-Propanol,0.0
+"1-Butanol, 3-methyl-, acetate",0.0
+1 - Undecene,0.0
+Isobutyl acetate,0.0
+Dodecane,0.0
+ S-Methyl 3-methylbutanethioate,0.0
+"2-Heptanone, 4,6-dimethyl-",0.0
+"Butanoic acid, 3-methyl-, 2-methylbutyl ester",0.0
+" Decanoic acid, ethyl ester",0.0
+"2-Heptanol, 4-methyl-",0.0
+2-Nonanol,0.0
+Pyrrole,0.0
+"1-Heptanol, 2,4-dimethyl-,",0.0
+1-Octanol,0.0
+2-Undecanone,0.0
+Butyrolactone ,0.0
+Indole,0.0

@@ -1,0 +1,10 @@
+if (Ethanol > 50056.0) and (Phenylethyl Alcohol > 123966.0) and (1-Butanol <= 1603968.312) then class: 2 (proba: 69.23%) | based on 26 samples
+
+if (Ethanol <= 50056.0) and (Dodecane <= 47490.167) then class: 0 (proba: 100.0%) | based on 10 samples
+
+if (Ethanol > 50056.0) and (Phenylethyl Alcohol > 123966.0) and (1-Butanol > 1603968.312) then class: 1 (proba: 100.0%) | based on 7 samples
+
+if (Ethanol > 50056.0) and (Phenylethyl Alcohol <= 123966.0) then class: 0 (proba: 100.0%) | based on 4 samples
+
+if (Ethanol <= 50056.0) and (Dodecane > 47490.167) then class: 1 (proba: 100.0%) | based on 1 samples
+

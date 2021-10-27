@@ -1,0 +1,12 @@
+if (Ethanol > 85656.0) and (1-Butanol <= 1603968.312) and ( Ethyl Acetate > 87810.0) then class: 2 (proba: 100.0%) | based on 15 samples
+
+if (Ethanol <= 85656.0) and (Dodecane <= 47490.167) then class: 0 (proba: 100.0%) | based on 12 samples
+
+if (Ethanol > 85656.0) and (1-Butanol <= 1603968.312) and ( Ethyl Acetate <= 87810.0) then class: 1 (proba: 60.0%) | based on 10 samples
+
+if (Ethanol > 85656.0) and (1-Butanol > 1603968.312) and (2-Dodecanone <= 50890.241) then class: 1 (proba: 100.0%) | based on 9 samples
+
+if (Ethanol > 85656.0) and (1-Butanol > 1603968.312) and (2-Dodecanone > 50890.241) then class: 0 (proba: 100.0%) | based on 3 samples
+
+if (Ethanol <= 85656.0) and (Dodecane > 47490.167) then class: 1 (proba: 100.0%) | based on 1 samples
+

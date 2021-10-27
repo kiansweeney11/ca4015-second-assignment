@@ -1,0 +1,282 @@
+{
+    "columns": [
+        " Ethyl Acetate",
+        "Ethanol",
+        "Propanoic acid, ethyl ester",
+        "2-Pentanone",
+        "Decane",
+        "Methyl Isobutyl Ketone",
+        "Amylene hydrate",
+        "Butanoic acid, 2-methyl-, methyl ester",
+        "Isobutyl acetate",
+        "Methyl isovalerate",
+        "1-Propanol",
+        "Methyl thiolacetate",
+        "Butanoic acid, 2-methyl-, ethyl ester",
+        "2-Hexanone",
+        "Ethyl isocyanide",
+        "1-Propanol, 2-methyl-",
+        "2-Pentanol, 2-methyl-",
+        "2-Pentanol",
+        "1-Butanol, 3-methyl-, acetate",
+        "1 - Undecene",
+        "1-Butanol",
+        "2-Heptanone",
+        "Dodecane",
+        "1-Butanol, 3-methyl-",
+        " S-Methyl 3-methylbutanethioate",
+        "2-Heptanone, 4,6-dimethyl-",
+        " 3-Buten-1-ol, 3-methyl-",
+        "Thiocyanic acid, methyl ester",
+        "Acetoin",
+        "1-Pentanol, 2-methyl-",
+        "Butanoic acid, 3-methyl-, 2-methylbutyl ester",
+        "2-Heptanol, 4-methyl-",
+        "2-Nonanone ",
+        "Acetic acid",
+        "2-Nonanol",
+        "Pyrrole",
+        "1H-Pyrrole, 2-methyl-",
+        "1-Heptanol, 2,4-dimethyl-,",
+        "Propanoic acid",
+        "Propanoic acid, 2-methyl-",
+        "1-Octanol",
+        "2-Undecanone",
+        "Benzoic acid, methyl ester",
+        "Butyrolactone ",
+        " Decanoic acid, ethyl ester",
+        "Acetic acid, decyl ester",
+        "2-Undecanol",
+        "Butanoic acid, 3-methyl-",
+        "2-Dodecanone",
+        "1-Decanol",
+        "2-Tridecanone",
+        " Dodecanoic acid, ethyl ester",
+        "1,4-Butanediol",
+        "Phenylethyl Alcohol",
+        "Acetophenone, 2'-amino-",
+        "2-Tridecanol",
+        "Tetradecanal",
+        "1-Dodecanol",
+        "Methyl tetradecanoate",
+        " 2-Pentadecanone",
+        "Tetradecanoic acid, ethyl ester",
+        "Hexadecanal",
+        "n-Tridecan-1-ol",
+        "1-Tetradecanol",
+        "n-Pentadecanol",
+        " 1-Hexadecanol",
+        "Indole"
+    ],
+    "rows": 67,
+    "cols": 67,
+    "target_is_numeric": true,
+    "columns_info": {
+        " Ethyl Acetate": [
+            "scale"
+        ],
+        "Ethanol": [
+            "scale"
+        ],
+        "Propanoic acid, ethyl ester": [
+            "scale"
+        ],
+        "2-Pentanone": [
+            "scale"
+        ],
+        "Decane": [
+            "scale"
+        ],
+        "Methyl Isobutyl Ketone": [
+            "scale"
+        ],
+        "Amylene hydrate": [
+            "scale"
+        ],
+        "Butanoic acid, 2-methyl-, methyl ester": [
+            "scale"
+        ],
+        "Isobutyl acetate": [
+            "scale"
+        ],
+        "Methyl isovalerate": [
+            "scale"
+        ],
+        "1-Propanol": [
+            "scale"
+        ],
+        "Methyl thiolacetate": [
+            "scale"
+        ],
+        "Butanoic acid, 2-methyl-, ethyl ester": [
+            "scale"
+        ],
+        "2-Hexanone": [
+            "scale"
+        ],
+        "Ethyl isocyanide": [
+            "scale"
+        ],
+        "1-Propanol, 2-methyl-": [
+            "scale"
+        ],
+        "2-Pentanol, 2-methyl-": [
+            "scale"
+        ],
+        "2-Pentanol": [
+            "scale"
+        ],
+        "1-Butanol, 3-methyl-, acetate": [
+            "scale"
+        ],
+        "1 - Undecene": [
+            "scale"
+        ],
+        "1-Butanol": [
+            "scale"
+        ],
+        "2-Heptanone": [
+            "scale"
+        ],
+        "Dodecane": [
+            "scale"
+        ],
+        "1-Butanol, 3-methyl-": [
+            "scale"
+        ],
+        " S-Methyl 3-methylbutanethioate": [
+            "scale"
+        ],
+        "2-Heptanone, 4,6-dimethyl-": [
+            "scale"
+        ],
+        " 3-Buten-1-ol, 3-methyl-": [
+            "scale"
+        ],
+        "Thiocyanic acid, methyl ester": [
+            "scale"
+        ],
+        "Acetoin": [
+            "scale"
+        ],
+        "1-Pentanol, 2-methyl-": [
+            "scale"
+        ],
+        "Butanoic acid, 3-methyl-, 2-methylbutyl ester": [
+            "scale"
+        ],
+        "2-Heptanol, 4-methyl-": [
+            "scale"
+        ],
+        "2-Nonanone ": [
+            "scale"
+        ],
+        "Acetic acid": [
+            "scale"
+        ],
+        "2-Nonanol": [
+            "scale"
+        ],
+        "Pyrrole": [
+            "scale"
+        ],
+        "1H-Pyrrole, 2-methyl-": [
+            "scale"
+        ],
+        "1-Heptanol, 2,4-dimethyl-,": [
+            "scale"
+        ],
+        "Propanoic acid": [
+            "scale"
+        ],
+        "Propanoic acid, 2-methyl-": [
+            "scale"
+        ],
+        "1-Octanol": [
+            "scale"
+        ],
+        "2-Undecanone": [
+            "scale"
+        ],
+        "Benzoic acid, methyl ester": [
+            "scale"
+        ],
+        "Butyrolactone ": [
+            "scale"
+        ],
+        " Decanoic acid, ethyl ester": [
+            "scale"
+        ],
+        "Acetic acid, decyl ester": [
+            "scale"
+        ],
+        "2-Undecanol": [
+            "scale"
+        ],
+        "Butanoic acid, 3-methyl-": [
+            "scale"
+        ],
+        "2-Dodecanone": [
+            "scale"
+        ],
+        "1-Decanol": [
+            "scale"
+        ],
+        "2-Tridecanone": [
+            "scale"
+        ],
+        " Dodecanoic acid, ethyl ester": [
+            "scale"
+        ],
+        "1,4-Butanediol": [
+            "scale"
+        ],
+        "Phenylethyl Alcohol": [
+            "scale"
+        ],
+        "Acetophenone, 2'-amino-": [
+            "scale"
+        ],
+        "2-Tridecanol": [
+            "scale"
+        ],
+        "Tetradecanal": [
+            "scale"
+        ],
+        "1-Dodecanol": [
+            "scale"
+        ],
+        "Methyl tetradecanoate": [
+            "scale"
+        ],
+        " 2-Pentadecanone": [
+            "scale"
+        ],
+        "Tetradecanoic acid, ethyl ester": [
+            "scale"
+        ],
+        "Hexadecanal": [
+            "scale"
+        ],
+        "n-Tridecan-1-ol": [
+            "scale"
+        ],
+        "1-Tetradecanol": [
+            "scale"
+        ],
+        "n-Pentadecanol": [
+            "scale"
+        ],
+        " 1-Hexadecanol": [
+            "scale"
+        ],
+        "Indole": [
+            "scale"
+        ]
+    },
+    "target_info": [],
+    "n_features": 67,
+    "is_sample_weighted": false,
+    "n_classes": 3,
+    "num_class": 3
+}

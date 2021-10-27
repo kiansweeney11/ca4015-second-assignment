@@ -1,0 +1,778 @@
+{
+    "uid": "c69b4e88-7051-4997-b2db-86dc6dcb65f2",
+    "name": "5_Default_NearestNeighbors",
+    "preprocessing": [
+        {
+            "scale": [
+                {
+                    "scale": [
+                        283130.418200916,
+                        2475185.138512707,
+                        17117.097429081306,
+                        1015598.5120907376,
+                        490022.729969058,
+                        291017.25690534455,
+                        173328.94480678177,
+                        293091.8962694392,
+                        73903.5970919131,
+                        155455.48971848426,
+                        363285.8273852658,
+                        90258.52738055059,
+                        432765.5966286391,
+                        49662.31797049948,
+                        17150.530513077432,
+                        172941.2198700171,
+                        61093.435023899154,
+                        399227.98066587985,
+                        27000.259539695093,
+                        2150730.1186101013,
+                        1113200.2561262776,
+                        140865.18210601227,
+                        43002.76025600682,
+                        6366791.426495101,
+                        138915.21401299333,
+                        63201.05036751881,
+                        144749.14581003372,
+                        63926.656630973936,
+                        369820.9181532251,
+                        25985.98300185546,
+                        90010.86730882345,
+                        43864.202391905004,
+                        553240.5727136086,
+                        4031313.365187599,
+                        479324.86685987253,
+                        133632.7114355511,
+                        149638.82629215464,
+                        58460.128137027794,
+                        66393.21587200437,
+                        34802.78679435864,
+                        283466.77185910376,
+                        340285.66876742995,
+                        128865.89477903419,
+                        35089.085739441885,
+                        55451.81787808062,
+                        43836.88285361185,
+                        562265.3190902033,
+                        828031.342135632,
+                        27540.134740455956,
+                        1066896.3988927267,
+                        144893.51304006265,
+                        29920.3993745921,
+                        16828.925175297125,
+                        26410.21918586164,
+                        283805.98748251435,
+                        44606.40654034545,
+                        15440.92354006068,
+                        1285333.9727818377,
+                        116570.05223720372,
+                        59120.4043702628,
+                        14500.86712010299,
+                        96975.98805742612,
+                        82738.45433311761,
+                        222967.0621344934,
+                        87137.5104236554,
+                        302830.833768315,
+                        10164227.476812225
+                    ],
+                    "mean": [
+                        215362.88,
+                        2048412.46,
+                        16603.053333333333,
+                        1125908.6,
+                        320822.46,
+                        182946.81719298247,
+                        113928.74,
+                        308281.51037037035,
+                        51163.13333333334,
+                        110184.1003508772,
+                        335275.28,
+                        118599.12,
+                        746967.4173333333,
+                        44567.30105263158,
+                        20947.4,
+                        231634.52,
+                        39101.433253012045,
+                        255741.14175438593,
+                        20577.948,
+                        5929883.590370369,
+                        1557380.9,
+                        100199.4,
+                        15972.62,
+                        6744197.42,
+                        322443.57333333336,
+                        62497.94666666667,
+                        149548.16,
+                        59238.32222222221,
+                        174215.16,
+                        52447.29333333334,
+                        99977.22888888889,
+                        41977.411851851844,
+                        651759.22,
+                        3524171.105263158,
+                        674074.2074074075,
+                        384422.402962963,
+                        331221.3340740741,
+                        54068.426666666666,
+                        54518.747142857144,
+                        19275.603999999996,
+                        669324.12,
+                        586380.6266666667,
+                        136013.1,
+                        37086.969333333334,
+                        43663.28,
+                        40387.74,
+                        375079.09333333327,
+                        2486725.8613333334,
+                        32334.86666666667,
+                        1582236.4333333333,
+                        335031.1533333334,
+                        24600.69333333333,
+                        18047.905333333332,
+                        153889.65333333335,
+                        347425.57629629626,
+                        61412.27333333332,
+                        8254.3,
+                        2232097.2,
+                        106951.33999999998,
+                        90326.42666666664,
+                        10415.653333333335,
+                        97124.10666666664,
+                        90876.59333333335,
+                        588331.6133333333,
+                        147791.00307692308,
+                        602418.7333333333,
+                        84221458.32
+                    ],
+                    "var": [
+                        80162833710.62561,
+                        6126541469914.169,
+                        292995024.3966618,
+                        1031440337760.92,
+                        240122275886.32837,
+                        84691043816.7113,
+                        30042923107.832397,
+                        85902859658.8157,
+                        5461741663.123827,
+                        24166409283.613766,
+                        131976592378.99715,
+                        8146601764.9056,
+                        187286061625.34198,
+                        2466345826.2029963,
+                        294140696.88,
+                        29908665530.1296,
+                        3732407803.0193877,
+                        159382980546.55615,
+                        729014015.2108959,
+                        4625640043096.62,
+                        1239214810239.6099,
+                        19842999529.76,
+                        1849237389.6355996,
+                        40536033068491.52,
+                        19297436684.275734,
+                        3994372767.5576496,
+                        20952315212.734398,
+                        4086617428.014444,
+                        136767511503.6944,
+                        675271312.572721,
+                        8101956233.686623,
+                        1924068251.4780045,
+                        306075131296.4816,
+                        16251487448340.162,
+                        229752327990.23453,
+                        17857701565.617264,
+                        22391778334.09363,
+                        3417586581.7977085,
+                        4408059113.826572,
+                        1211233968.653584,
+                        80353410748.22118,
+                        115794336368.49706,
+                        16606418837.201113,
+                        1231243938.0299041,
+                        3074904105.9838214,
+                        1921672298.321289,
+                        316142289051.6081,
+                        685635903558.936,
+                        758459021.5224692,
+                        1138267925970.2686,
+                        20994130121.09081,
+                        895230298.7350912,
+                        283212722.55574936,
+                        697499677.4452542,
+                        80545838530.92508,
+                        1989731504.4425733,
+                        238422119.77,
+                        1652083421587.142,
+                        13588577078.584404,
+                        3495222212.9033885,
+                        210275147.23488396,
+                        9404342259.714052,
+                        6845651825.433388,
+                        49714310796.88704,
+                        7592945722.832653,
+                        91706513880.8128,
+                        103311520200384.62
+                    ],
+                    "n_samples_seen": 50,
+                    "n_features_in": 67,
+                    "columns": [
+                        " Ethyl Acetate",
+                        "Ethanol",
+                        "Propanoic acid, ethyl ester",
+                        "2-Pentanone",
+                        "Decane",
+                        "Methyl Isobutyl Ketone",
+                        "Amylene hydrate",
+                        "Butanoic acid, 2-methyl-, methyl ester",
+                        "Isobutyl acetate",
+                        "Methyl isovalerate",
+                        "1-Propanol",
+                        "Methyl thiolacetate",
+                        "Butanoic acid, 2-methyl-, ethyl ester",
+                        "2-Hexanone",
+                        "Ethyl isocyanide",
+                        "1-Propanol, 2-methyl-",
+                        "2-Pentanol, 2-methyl-",
+                        "2-Pentanol",
+                        "1-Butanol, 3-methyl-, acetate",
+                        "1 - Undecene",
+                        "1-Butanol",
+                        "2-Heptanone",
+                        "Dodecane",
+                        "1-Butanol, 3-methyl-",
+                        " S-Methyl 3-methylbutanethioate",
+                        "2-Heptanone, 4,6-dimethyl-",
+                        " 3-Buten-1-ol, 3-methyl-",
+                        "Thiocyanic acid, methyl ester",
+                        "Acetoin",
+                        "1-Pentanol, 2-methyl-",
+                        "Butanoic acid, 3-methyl-, 2-methylbutyl ester",
+                        "2-Heptanol, 4-methyl-",
+                        "2-Nonanone ",
+                        "Acetic acid",
+                        "2-Nonanol",
+                        "Pyrrole",
+                        "1H-Pyrrole, 2-methyl-",
+                        "1-Heptanol, 2,4-dimethyl-,",
+                        "Propanoic acid",
+                        "Propanoic acid, 2-methyl-",
+                        "1-Octanol",
+                        "2-Undecanone",
+                        "Benzoic acid, methyl ester",
+                        "Butyrolactone ",
+                        " Decanoic acid, ethyl ester",
+                        "Acetic acid, decyl ester",
+                        "2-Undecanol",
+                        "Butanoic acid, 3-methyl-",
+                        "2-Dodecanone",
+                        "1-Decanol",
+                        "2-Tridecanone",
+                        " Dodecanoic acid, ethyl ester",
+                        "1,4-Butanediol",
+                        "Phenylethyl Alcohol",
+                        "Acetophenone, 2'-amino-",
+                        "2-Tridecanol",
+                        "Tetradecanal",
+                        "1-Dodecanol",
+                        "Methyl tetradecanoate",
+                        " 2-Pentadecanone",
+                        "Tetradecanoic acid, ethyl ester",
+                        "Hexadecanal",
+                        "n-Tridecan-1-ol",
+                        "1-Tetradecanol",
+                        "n-Pentadecanol",
+                        " 1-Hexadecanol",
+                        "Indole"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "categorical_y": {
+                "0": 0,
+                "1": 1,
+                "2": 2
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {
+                    " Ethyl Acetate": [
+                        "scale_normal"
+                    ],
+                    "Ethanol": [
+                        "scale_normal"
+                    ],
+                    "Propanoic acid, ethyl ester": [
+                        "scale_normal"
+                    ],
+                    "2-Pentanone": [
+                        "scale_normal"
+                    ],
+                    "Decane": [
+                        "scale_normal"
+                    ],
+                    "Methyl Isobutyl Ketone": [
+                        "scale_normal"
+                    ],
+                    "Amylene hydrate": [
+                        "scale_normal"
+                    ],
+                    "Butanoic acid, 2-methyl-, methyl ester": [
+                        "scale_normal"
+                    ],
+                    "Isobutyl acetate": [
+                        "scale_normal"
+                    ],
+                    "Methyl isovalerate": [
+                        "scale_normal"
+                    ],
+                    "1-Propanol": [
+                        "scale_normal"
+                    ],
+                    "Methyl thiolacetate": [
+                        "scale_normal"
+                    ],
+                    "Butanoic acid, 2-methyl-, ethyl ester": [
+                        "scale_normal"
+                    ],
+                    "2-Hexanone": [
+                        "scale_normal"
+                    ],
+                    "Ethyl isocyanide": [
+                        "scale_normal"
+                    ],
+                    "1-Propanol, 2-methyl-": [
+                        "scale_normal"
+                    ],
+                    "2-Pentanol, 2-methyl-": [
+                        "scale_normal"
+                    ],
+                    "2-Pentanol": [
+                        "scale_normal"
+                    ],
+                    "1-Butanol, 3-methyl-, acetate": [
+                        "scale_normal"
+                    ],
+                    "1 - Undecene": [
+                        "scale_normal"
+                    ],
+                    "1-Butanol": [
+                        "scale_normal"
+                    ],
+                    "2-Heptanone": [
+                        "scale_normal"
+                    ],
+                    "Dodecane": [
+                        "scale_normal"
+                    ],
+                    "1-Butanol, 3-methyl-": [
+                        "scale_normal"
+                    ],
+                    " S-Methyl 3-methylbutanethioate": [
+                        "scale_normal"
+                    ],
+                    "2-Heptanone, 4,6-dimethyl-": [
+                        "scale_normal"
+                    ],
+                    " 3-Buten-1-ol, 3-methyl-": [
+                        "scale_normal"
+                    ],
+                    "Thiocyanic acid, methyl ester": [
+                        "scale_normal"
+                    ],
+                    "Acetoin": [
+                        "scale_normal"
+                    ],
+                    "1-Pentanol, 2-methyl-": [
+                        "scale_normal"
+                    ],
+                    "Butanoic acid, 3-methyl-, 2-methylbutyl ester": [
+                        "scale_normal"
+                    ],
+                    "2-Heptanol, 4-methyl-": [
+                        "scale_normal"
+                    ],
+                    "2-Nonanone ": [
+                        "scale_normal"
+                    ],
+                    "Acetic acid": [
+                        "scale_normal"
+                    ],
+                    "2-Nonanol": [
+                        "scale_normal"
+                    ],
+                    "Pyrrole": [
+                        "scale_normal"
+                    ],
+                    "1H-Pyrrole, 2-methyl-": [
+                        "scale_normal"
+                    ],
+                    "1-Heptanol, 2,4-dimethyl-,": [
+                        "scale_normal"
+                    ],
+                    "Propanoic acid": [
+                        "scale_normal"
+                    ],
+                    "Propanoic acid, 2-methyl-": [
+                        "scale_normal"
+                    ],
+                    "1-Octanol": [
+                        "scale_normal"
+                    ],
+                    "2-Undecanone": [
+                        "scale_normal"
+                    ],
+                    "Benzoic acid, methyl ester": [
+                        "scale_normal"
+                    ],
+                    "Butyrolactone ": [
+                        "scale_normal"
+                    ],
+                    " Decanoic acid, ethyl ester": [
+                        "scale_normal"
+                    ],
+                    "Acetic acid, decyl ester": [
+                        "scale_normal"
+                    ],
+                    "2-Undecanol": [
+                        "scale_normal"
+                    ],
+                    "Butanoic acid, 3-methyl-": [
+                        "scale_normal"
+                    ],
+                    "2-Dodecanone": [
+                        "scale_normal"
+                    ],
+                    "1-Decanol": [
+                        "scale_normal"
+                    ],
+                    "2-Tridecanone": [
+                        "scale_normal"
+                    ],
+                    " Dodecanoic acid, ethyl ester": [
+                        "scale_normal"
+                    ],
+                    "1,4-Butanediol": [
+                        "scale_normal"
+                    ],
+                    "Phenylethyl Alcohol": [
+                        "scale_normal"
+                    ],
+                    "Acetophenone, 2'-amino-": [
+                        "scale_normal"
+                    ],
+                    "2-Tridecanol": [
+                        "scale_normal"
+                    ],
+                    "Tetradecanal": [
+                        "scale_normal"
+                    ],
+                    "1-Dodecanol": [
+                        "scale_normal"
+                    ],
+                    "Methyl tetradecanoate": [
+                        "scale_normal"
+                    ],
+                    " 2-Pentadecanone": [
+                        "scale_normal"
+                    ],
+                    "Tetradecanoic acid, ethyl ester": [
+                        "scale_normal"
+                    ],
+                    "Hexadecanal": [
+                        "scale_normal"
+                    ],
+                    "n-Tridecan-1-ol": [
+                        "scale_normal"
+                    ],
+                    "1-Tetradecanol": [
+                        "scale_normal"
+                    ],
+                    "n-Pentadecanol": [
+                        "scale_normal"
+                    ],
+                    " 1-Hexadecanol": [
+                        "scale_normal"
+                    ],
+                    "Indole": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.0",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "6ede784e-cf01-4e29-b9e5-cd30eb67da2f",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "n_neighbors": 5,
+                "weights": "uniform",
+                "seed": 5,
+                "num_class": 3,
+                "explain_level": 2
+            },
+            "name": "learner_fold_0"
+        }
+    ],
+    "params": {
+        "additional": {
+            "max_rows_limit": 100000,
+            "max_cols_limit": 100
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                " Ethyl Acetate": [
+                    "scale_normal"
+                ],
+                "Ethanol": [
+                    "scale_normal"
+                ],
+                "Propanoic acid, ethyl ester": [
+                    "scale_normal"
+                ],
+                "2-Pentanone": [
+                    "scale_normal"
+                ],
+                "Decane": [
+                    "scale_normal"
+                ],
+                "Methyl Isobutyl Ketone": [
+                    "scale_normal"
+                ],
+                "Amylene hydrate": [
+                    "scale_normal"
+                ],
+                "Butanoic acid, 2-methyl-, methyl ester": [
+                    "scale_normal"
+                ],
+                "Isobutyl acetate": [
+                    "scale_normal"
+                ],
+                "Methyl isovalerate": [
+                    "scale_normal"
+                ],
+                "1-Propanol": [
+                    "scale_normal"
+                ],
+                "Methyl thiolacetate": [
+                    "scale_normal"
+                ],
+                "Butanoic acid, 2-methyl-, ethyl ester": [
+                    "scale_normal"
+                ],
+                "2-Hexanone": [
+                    "scale_normal"
+                ],
+                "Ethyl isocyanide": [
+                    "scale_normal"
+                ],
+                "1-Propanol, 2-methyl-": [
+                    "scale_normal"
+                ],
+                "2-Pentanol, 2-methyl-": [
+                    "scale_normal"
+                ],
+                "2-Pentanol": [
+                    "scale_normal"
+                ],
+                "1-Butanol, 3-methyl-, acetate": [
+                    "scale_normal"
+                ],
+                "1 - Undecene": [
+                    "scale_normal"
+                ],
+                "1-Butanol": [
+                    "scale_normal"
+                ],
+                "2-Heptanone": [
+                    "scale_normal"
+                ],
+                "Dodecane": [
+                    "scale_normal"
+                ],
+                "1-Butanol, 3-methyl-": [
+                    "scale_normal"
+                ],
+                " S-Methyl 3-methylbutanethioate": [
+                    "scale_normal"
+                ],
+                "2-Heptanone, 4,6-dimethyl-": [
+                    "scale_normal"
+                ],
+                " 3-Buten-1-ol, 3-methyl-": [
+                    "scale_normal"
+                ],
+                "Thiocyanic acid, methyl ester": [
+                    "scale_normal"
+                ],
+                "Acetoin": [
+                    "scale_normal"
+                ],
+                "1-Pentanol, 2-methyl-": [
+                    "scale_normal"
+                ],
+                "Butanoic acid, 3-methyl-, 2-methylbutyl ester": [
+                    "scale_normal"
+                ],
+                "2-Heptanol, 4-methyl-": [
+                    "scale_normal"
+                ],
+                "2-Nonanone ": [
+                    "scale_normal"
+                ],
+                "Acetic acid": [
+                    "scale_normal"
+                ],
+                "2-Nonanol": [
+                    "scale_normal"
+                ],
+                "Pyrrole": [
+                    "scale_normal"
+                ],
+                "1H-Pyrrole, 2-methyl-": [
+                    "scale_normal"
+                ],
+                "1-Heptanol, 2,4-dimethyl-,": [
+                    "scale_normal"
+                ],
+                "Propanoic acid": [
+                    "scale_normal"
+                ],
+                "Propanoic acid, 2-methyl-": [
+                    "scale_normal"
+                ],
+                "1-Octanol": [
+                    "scale_normal"
+                ],
+                "2-Undecanone": [
+                    "scale_normal"
+                ],
+                "Benzoic acid, methyl ester": [
+                    "scale_normal"
+                ],
+                "Butyrolactone ": [
+                    "scale_normal"
+                ],
+                " Decanoic acid, ethyl ester": [
+                    "scale_normal"
+                ],
+                "Acetic acid, decyl ester": [
+                    "scale_normal"
+                ],
+                "2-Undecanol": [
+                    "scale_normal"
+                ],
+                "Butanoic acid, 3-methyl-": [
+                    "scale_normal"
+                ],
+                "2-Dodecanone": [
+                    "scale_normal"
+                ],
+                "1-Decanol": [
+                    "scale_normal"
+                ],
+                "2-Tridecanone": [
+                    "scale_normal"
+                ],
+                " Dodecanoic acid, ethyl ester": [
+                    "scale_normal"
+                ],
+                "1,4-Butanediol": [
+                    "scale_normal"
+                ],
+                "Phenylethyl Alcohol": [
+                    "scale_normal"
+                ],
+                "Acetophenone, 2'-amino-": [
+                    "scale_normal"
+                ],
+                "2-Tridecanol": [
+                    "scale_normal"
+                ],
+                "Tetradecanal": [
+                    "scale_normal"
+                ],
+                "1-Dodecanol": [
+                    "scale_normal"
+                ],
+                "Methyl tetradecanoate": [
+                    "scale_normal"
+                ],
+                " 2-Pentadecanone": [
+                    "scale_normal"
+                ],
+                "Tetradecanoic acid, ethyl ester": [
+                    "scale_normal"
+                ],
+                "Hexadecanal": [
+                    "scale_normal"
+                ],
+                "n-Tridecan-1-ol": [
+                    "scale_normal"
+                ],
+                "1-Tetradecanol": [
+                    "scale_normal"
+                ],
+                "n-Pentadecanol": [
+                    "scale_normal"
+                ],
+                " 1-Hexadecanol": [
+                    "scale_normal"
+                ],
+                "Indole": [
+                    "scale_normal"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude",
+                "categorical_to_int"
+            ],
+            "ml_task": "multiclass_classification"
+        },
+        "validation_strategy": {
+            "validation_type": "split",
+            "train_ratio": 0.75,
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "AutoML_2\\X.data",
+            "y_path": "AutoML_2\\y.data",
+            "results_path": "AutoML_2"
+        },
+        "learner": {
+            "model_type": "Nearest Neighbors",
+            "ml_task": "multiclass_classification",
+            "n_jobs": -1,
+            "n_neighbors": 5,
+            "weights": "uniform",
+            "seed": 5,
+            "num_class": 3,
+            "explain_level": 2
+        },
+        "automl_random_state": 1234,
+        "ml_task": "multiclass_classification",
+        "explain_level": 2,
+        "name": "5_Default_NearestNeighbors",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 60
+    },
+    "saved": [
+        "5_Default_NearestNeighbors\\learner_fold_0.k_neighbors"
+    ],
+    "predictions_fname": "5_Default_NearestNeighbors\\predictions_validation.csv",
+    "metric_name": "logloss",
+    "final_loss": 2.112120951606538,
+    "train_time": 4.09269905090332,
+    "is_stacked": false
+}

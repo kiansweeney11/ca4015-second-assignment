@@ -1,0 +1,7 @@
+name,model_type,metric_type,metric_value,train_time
+1_DecisionTree,Decision Tree,logloss,4.695848553628839,17.48
+2_Linear,Linear,logloss,0.6156861858978326,14.24
+3_Default_Xgboost,Xgboost,logloss,0.9308564625680447,13.84
+4_Default_RandomForest,Random Forest,logloss,1.036560387383057,14.67
+5_Default_NearestNeighbors,Nearest Neighbors,logloss,0.509122188694247,5.77
+Ensemble,Ensemble,logloss,0.46908050275474567,0.31

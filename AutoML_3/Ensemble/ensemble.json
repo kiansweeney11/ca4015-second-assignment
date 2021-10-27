@@ -1,0 +1,20 @@
+{
+    "name": "Ensemble",
+    "ml_task": "multiclass_classification",
+    "optimize_metric": "logloss",
+    "selected_models": [
+        {
+            "model": "2_Linear",
+            "repeat": 1.0
+        },
+        {
+            "model": "3_Default_Xgboost",
+            "repeat": 2.0
+        }
+    ],
+    "predictions_fname": "Ensemble\\predictions_ensemble.csv",
+    "metric_name": "logloss",
+    "final_loss": 0.2109673778093347,
+    "train_time": 0.36699676513671875,
+    "is_stacked": false
+}
